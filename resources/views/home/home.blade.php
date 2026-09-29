@@ -26,7 +26,7 @@
       <div class="d-flex align-items-center justify-content-center gap-2 mt-2 mt-lg-0">
         <button class="btn btn-link"><i class="bi bi-search text-success fs-5"></i></button>
         <button class="btn btn-link"><i class="bi bi-person text-success fs-4"></i></button>
-        <button class="btn fw-bold text-white" style="background:#2C9678">Iniciar Sesión</button>
+        <button class="btn fw-bold text-white" style="background:#2C9678"><a style="text-decoration: none; color:white;" href="{{ route('login.index') }}">Iniciar Sesión</a></button>
       </div>
     </div>
   </div>
