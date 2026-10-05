@@ -19,7 +19,7 @@
     <div class="collapse navbar-collapse" id="navbarScroll">
       <ul class="navbar-nav mx-auto text-center text-lg-start">
         <li class="nav-item"><a class="nav-link active text-success fs-5" href="#">Inicio</a></li>
-        <li class="nav-item"><a class="nav-link text-success fs-5" href="#">Mascotas</a></li>
+        <li class="nav-item"><a class="nav-link text-success fs-5" href="{{ route('mascotas.index') }}">Mascotas</a></li>
         <li class="nav-item"><a class="nav-link text-success fs-5" href="#">Quiénes Somos</a></li>
         <li class="nav-item"><a class="nav-link text-success fs-5" href="#">Contacto</a></li>
       </ul>

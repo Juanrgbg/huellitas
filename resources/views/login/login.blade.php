@@ -49,9 +49,9 @@
               <div class="input-group mb-3">
                 <span class="input-group-text bg-white"><i class="bi bi-lock-fill text-success"></i></span>
                 <input type="password" id="clave" class="form-control" placeholder="Contraseña" aria-label="Contraseña" required>
-                <button type="button" class="btn btn-outline-secondary" aria-label="Mostrar contraseña"
+                <button type="button" style="color: #1F5639" class="btn btn-outline-success" aria-label="Mostrar contraseña"
                         onclick="const c=document.getElementById('clave');c.type=c.type==='password'?'text':'password'">
-                  <i class="bi bi-eye"></i>
+                  <i style="color: #1F5639" class="bi bi-eye"></i>
                 </button>
               </div>
 

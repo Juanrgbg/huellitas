@@ -26,7 +26,7 @@
 @yield('content')
 
 
-    <footer class="container-fluid  p-3 d-flex flex-wrap gap-4 justify-content-between align-items-center" style="background:#1F5639;">
+    <footer class="container-fluid  p-2 d-flex flex-wrap gap-4 justify-content-between align-items-center" style="background:#1F5639;">
 
   <!-- Marca -->
   <div class="d-flex flex-column">
