@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Login;
+use App\Models\create_count;
 use Illuminate\Http\Request;
 
-class LoginController extends Controller
+class CreateCountController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('login.login');
+        return view('login.login-create');
     }
 
     /**
@@ -20,7 +20,7 @@ class LoginController extends Controller
      */
     public function create()
     {
-        //
+        return view('home.home');
     }
 
     /**
@@ -34,7 +34,7 @@ class LoginController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Login $login)
+    public function show(create_count $create_count)
     {
         //
     }
@@ -42,7 +42,7 @@ class LoginController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Login $login)
+    public function edit(create_count $create_count)
     {
         //
     }
@@ -50,7 +50,7 @@ class LoginController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Login $login)
+    public function update(Request $request, create_count $create_count)
     {
         //
     }
@@ -58,7 +58,7 @@ class LoginController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Login $login)
+    public function destroy(create_count $create_count)
     {
         //
     }

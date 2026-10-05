@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <link rel="stylesheet" href="path/to/icon-wizard.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
@@ -17,6 +17,7 @@
     /* Se */
     body {
         font-family: "Baloo 2", sans-serif;
+        
     }
 
 </style>
@@ -25,7 +26,7 @@
 @yield('content')
 
 
-    <footer class="container-fluid mt-5 p-3 d-flex flex-wrap gap-4 justify-content-between align-items-center" style="background:#1F5639;">
+    <footer class="container-fluid  p-3 d-flex flex-wrap gap-4 justify-content-between align-items-center" style="background:#1F5639;">
 
   <!-- Marca -->
   <div class="d-flex flex-column">
