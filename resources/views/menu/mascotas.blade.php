@@ -16,6 +16,15 @@ border: solid 1px rgba(0, 0, 0, 0.13);
 background-color: #1c683f;
 border-radius: 7px;
 font-size: 20px;
+}
+
+.tabs:hover {
+background-color: #0b7436;
+}
+
+.tabs.active {
+background-color: #0b7436;
+}
 
 .mascota-card {
 min-height: 300px;
@@ -28,6 +37,12 @@ overflow: hidden;
     object-fit: cover;
 }
 
+.ver-detalles {
+background-color: #1F5639;
+}
+
+.ver-detalles:hover {
+background-color: #206942;
 }
 
 
@@ -72,7 +87,7 @@ overflow: hidden;
                     <i class="bi bi-house"></i> Inicio
                 </a>
 
-                <a href="#" class="d-block text-white p-2 text-decoration-none tabs">
+                <a href="{{ route('mascotas.index') }}" class="d-block text-white p-2 text-decoration-none tabs {{ request()->routeIs('mascotas.*') ? 'active' : '' }}">
                     <img src="{{ asset('images/HuellaBlancaa.png') }}" width="25px" height="25px"> Mascotas
                 </a>
 
@@ -123,35 +138,43 @@ overflow: hidden;
                     <div class="card mascota-card">
                         <img src="{{ asset('images/max.jpg') }}" class="card-img-top mascota-img" alt="Max">
                         <div class="card-body">
-                            <h3>Max</h3>
+                            <h3>Max <i style="color: rgb(0, 162, 255)" class="bi bi-gender-male"></i></h3>
+                            <p class="d-flex w-25 justify-content-center shadow-sm rounded bg-info bg-opacity-50 mb-2">Perro</p>
+                            <p class="text-muted fs-5 font-monospace mb-1">2 años - Mediano</p>
+                            <p class="fs-5">Cariñoso, juguetón y le encanta pasear.</p>
+                            <a class="d-flex border align-items-center justify-content-center text-decoration-none text-white rounded m-2 p-2 fs-5 ver-detalles" href="#">Ver detalles</a>
                         </div>
                     </div>
                 </div>  
                 <div class="col-12 col-md-3">
                     <div class="card mascota-card">
+                        <img src="{{ asset('images/luna.jpg') }}" class="card-img-top mascota-img" alt="luna">
                         <div class="card-body">
-                            <h1>Hola</h1>
+                            <h3>Luna</h3>
                         </div>
                     </div>
                 </div>
                 <div class="col-12 col-md-3">
                     <div class="card mascota-card">
+                        <img src="{{ asset('images/rocky.jpg') }}" class="card-img-top mascota-img" alt="rocky">
                         <div class="card-body">
-                            <h1>Hola</h1>
+                            <h3>Rocky</h3>
                         </div>
                     </div>
                 </div>
                 <div class="col-12 col-md-3">
                     <div class="card mascota-card">
+                        <img src="{{ asset('images/tortuga.jpg') }}" class="card-img-top mascota-img" alt="tortuga">
                         <div class="card-body">
-                            <h1>Hola</h1>
+                            <h3>Tortuga</h3>
                         </div>
                     </div>
                 </div>
                 <div class="col-12 col-md-3">
                     <div class="card mascota-card">
+                        <img src="{{ asset('images/nieve.jpg') }}" class="card-img-top mascota-img" alt="nieve">
                         <div class="card-body">
-                            <h1>Hola</h1>
+                            <h3>Nieve</h3>
                         </div>
                     </div>
                 </div>                    
@@ -202,6 +225,18 @@ overflow: hidden;
             if (!sidebar.contains(e.target) && !showBtn.contains(e.target)) {
                 sidebar.classList.remove("active-mobile");
             }
+        });
+    });
+
+
+    const tabs = document.querySelectorAll(".tabs");
+
+    tabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+
+            tabs.forEach(t => t.classList.remove("active"));
+
+         tab.classList.add("active");
         });
     });
 </script>
