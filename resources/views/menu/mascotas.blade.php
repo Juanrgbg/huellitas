@@ -76,7 +76,7 @@ overflow: hidden;
                     <img src="{{ asset('images/HuellaBlancaa.png') }}" width="25px" height="25px"> Mascotas
                 </a>
 
-                <a href="#" class="d-block text-white p-2 text-decoration-none tabs">
+                <a href="{{ route('mascotas.create') }}" class="d-block text-white p-2 text-decoration-none tabs">
                     <i class="bi bi-plus-circle-fill"></i> Añadir Mascota
                 </a>
 
