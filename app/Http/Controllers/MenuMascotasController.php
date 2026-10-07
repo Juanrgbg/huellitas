@@ -20,7 +20,7 @@ class MenuMascotasController extends Controller
      */
     public function create()
     {
-        //
+        return view('mascotas.anadir');
     }
 
     /**
