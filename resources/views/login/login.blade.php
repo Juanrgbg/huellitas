@@ -23,7 +23,7 @@
           .atras {
             position: absolute;
             z-index: -1;
-            max-width:100%;
+            max-width: auto;
             height: auto;
           }
 
@@ -90,7 +90,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-</html>
 
 
 @endsection

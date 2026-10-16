@@ -1,250 +1,195 @@
 @extends('layout.layout')
 
-@section('title','Mascotas')
-
-
+@section('title','main')
 @section('content')
-<style>
 
-.sidebar {
-background-color: #1F5639;
-min-height: 100vh;
-}
+<body>
+<div class="container-fluid">
+    <div class="row min-vh-100">
 
-.tabs {
-border: solid 1px rgba(0, 0, 0, 0.13);
-background-color: #1c683f;
-border-radius: 7px;
-font-size: 20px;
-}
+        <!-- MENÚ LATERAL -->
+        <aside class="col-12 col-md-3 col-xl-2 text-white p-3"
+               style="background-color: #20583F;">
 
-.tabs:hover {
-background-color: #0b7436;
-}
+            <h2 class="fw-bold fst-italic mb-4">
+                <i class="bi bi-house-heart-fill"></i>
+                Huellitas a casa
+            </h2>
 
-.tabs.active {
-background-color: #0b7436;
-}
+            <nav class="nav flex-column gap-1">
 
-.mascota-card {
-min-height: 300px;
-overflow: hidden;
-}
-
-.mascota-img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-.ver-detalles {
-background-color: #1F5639;
-}
-
-.ver-detalles:hover {
-background-color: #206942;
-}
-
-
-/* Ajustes para móviles */
-@media (max-width: 767.98px) {
-    /* Mantiene el sidebar oculto por defecto en móvil */
-    .sidebar {
-        position: fixed;
-        top: 0;
-        left: -280px; /* Lo oculta fuera de la pantalla a la izquierda */
-        width: 260px;
-        height: 100vh;
-        z-index: 1050;
-        transition: left 0.3s ease-in-out;
-        box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3);
-    }
-
-    /* Clase que activa el script cuando presionas el botón de las 3 líneas */
-    .sidebar.active-mobile {
-        left: 0 !important; /* Desliza el sidebar hacia adentro */
-        display: block !important;
-    }
-}
-</style>
-
-
-
- <div class="container-fluid">
-
-        <div class="row">
-
-            <!-- Sidebar -->
-            <aside class="col-md-2 d-none d-md-block sidebar">
-
-                <div class="text-start text-white p-2">
-                    <a href="#" style="text-decoration:none; color: white; font-size: 30px;"><i class="bi bi-house-heart-fill"> Huellitas a casa</i></a>
-                </div>
-
-                <nav>
-
-                <a href="#" class="d-block text-white p-2 text-decoration-none tabs">
+                <a href="{{ route('home') }}"
+                   class="nav-link text-white rounded p-3"
+                   style="background-color: #196741;">
                     <i class="bi bi-house"></i> Inicio
                 </a>
 
-                <a href="{{ route('mascotas.index') }}" class="d-block text-white p-2 text-decoration-none tabs {{ request()->routeIs('mascotas.*') ? 'active' : '' }}">
-                    <img src="{{ asset('images/HuellaBlancaa.png') }}" width="25px" height="25px"> Mascotas
+                <a href="{{ route('mascotas.index') }}"
+                   class="nav-link text-white rounded p-3"
+                   style="background-color: #196741;">
+                    <i class="bi bi-paw-fill"></i> Mascotas
                 </a>
 
-                <a href="#" class="d-block text-white p-2 text-decoration-none tabs">
-                    <i class="bi bi-plus-circle-fill"></i> Añadir Mascota
+                <a href="{{ route('anadirMascota.index') }}"
+                   class="nav-link text-white rounded p-3"
+                   style="background-color: #196741;">
+                    <i class="bi bi-plus-circle"></i> Añadir Mascota
                 </a>
 
-                <a href="#" class="d-block text-white p-2 text-decoration-none tabs">
+                <a href="#"
+                   class="nav-link text-white rounded p-3"
+                   style="background-color: #196741;">
                     <i class="bi bi-person-fill"></i> Perfil
                 </a>
 
-                <a href="#" class="d-block text-white p-2 text-decoration-none tabs">
-                    <i class="bi bi-arrow-bar-right"></i> Cerrar Sesión
-                </a>
+                <form action="#" method="POST">
+                    @csrf
+                    <button type="submit"
+                            class="nav-link text-white rounded p-3 w-100 text-start"
+                            style="background-color: #196741;">
+                        <i class="bi bi-box-arrow-right"></i>
+                        Cerrar Sesión
+                    </button>
+                </form>
 
             </nav>
-
         </aside>
 
+        <!-- CONTENIDO PRINCIPAL -->
+        <main class="col-12 col-md-9 col-xl-10 p-4 p-lg-5"
+              style="background-color: #F5F1E8;">
 
-        <!-- CONTENIDO -->
-        <main class="col-12 col-md-10 p-2 p-md-5">
+            <!-- TÍTULO Y BUSCADOR -->
+            <div class="row align-items-center mb-4">
+                <div class="col-12 col-lg-7">
+                    <h1 class="fw-bold text-dark">
+                        Buscar Mascotas
+                    </h1>
 
-            <!-- BOTON CELULAR -->
-            <a class="d-md-none" id="show" style="text-decoration: none; color: gray; font-size: 25px;" href=""><i class="bi bi-justify"></i></a>
-
-            
-            <div class="d-flex justify-content-between">
-                    <h1>Buscar Mascotas</h1>
-                    <div class="input-group mb-2 w-25">
-                        <input type="text" class="form-control" placeholder="Buscar por nombre,raza...">
-                        <button class="input-group-text"><i class="bi bi-search"></i></button>
-                    </div>
-                </div>
-                    
-                <p class="ps-3">Encuentra a tu nuevo mejor amigo.</p>
-                
-                <div class="d-flex gap-2 m-3">
-                    <button type="button" class="btn btn-success">Todos</button>
-                    <button type="button" class="btn btn-success">Perros</button>
-                    <button type="button" class="btn btn-success">Gatos</button>
-                    <button type="button" class="btn btn-success">Especies Exoticas</button>
+                    <p class="ms-2 mb-3">
+                        Encuentra a tu nuevo mejor amigo.
+                    </p>
                 </div>
 
-                <div class="row g-3">
+                <div class="col-12 col-lg-5">
+                    <form action="{{ route('mascotas.index') }}"
+                          method="GET">
+                        <div class="input-group">
+                            <input type="search"
+                                   name="buscar"
+                                   class="form-control form-control-lg"
+                                   placeholder="Buscar por nombre, raza..."
+                                   value="{{ request('buscar') }}">
 
-                <div class="col-12 col-md-3">
-                    <div class="card mascota-card">
-                        <img src="{{ asset('images/max.jpg') }}" class="card-img-top mascota-img" alt="Max">
-                        <div class="card-body">
-                            <h3>Max <i style="color: rgb(0, 162, 255)" class="bi bi-gender-male"></i></h3>
-                            <p class="d-flex w-25 justify-content-center shadow-sm rounded bg-info bg-opacity-50 mb-2">Perro</p>
-                            <p class="text-muted fs-5 font-monospace mb-1">2 años - Mediano</p>
-                            <p class="fs-5">Cariñoso, juguetón y le encanta pasear.</p>
-                            <a class="d-flex border align-items-center justify-content-center text-decoration-none text-white rounded m-2 p-2 fs-5 ver-detalles" href="#">Ver detalles</a>
+                            <button class="btn btn-light border"
+                                    type="submit">
+                                <i class="bi bi-search"></i>
+                            </button>
                         </div>
-                    </div>
-                </div>  
-                <div class="col-12 col-md-3">
-                    <div class="card mascota-card">
-                        <img src="{{ asset('images/luna.jpg') }}" class="card-img-top mascota-img" alt="luna">
-                        <div class="card-body">
-                            <h3>Luna</h3>
-                        </div>
-                    </div>
+                    </form>
                 </div>
-                <div class="col-12 col-md-3">
-                    <div class="card mascota-card">
-                        <img src="{{ asset('images/rocky.jpg') }}" class="card-img-top mascota-img" alt="rocky">
-                        <div class="card-body">
-                            <h3>Rocky</h3>
+            </div>
+
+            <!-- FILTROS -->
+            <div class="d-flex flex-wrap gap-2 mb-4">
+                <a href="{{ route('mascotas.index') }}"
+                   class="btn btn-success">
+                    Todos
+                </a>
+
+                <a href="{{ route('mascotas.index', ['especie' => 'Perro']) }}"
+                   class="btn btn-success">
+                    Perros
+                </a>
+
+                <a href="{{ route('mascotas.index', ['especie' => 'Gato']) }}"
+                   class="btn btn-success">
+                    Gatos
+                </a>
+
+                <a href="{{ route('mascotas.index', ['especie' => 'Exótica']) }}"
+                   class="btn btn-success">
+                    Especies Exóticas
+                </a>
+            </div>
+
+            <!-- MASCOTAS PUBLICADAS -->
+            <div class="row g-4">
+
+                {{-- @forelse ($mascotas as $mascota) --}}
+
+                    <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+
+                        <div class="card h-100 shadow-sm">
+
+                            {{-- @if ($mascota->imagen) --}}
+                                <img src="#"
+                                     class="card-img-top"
+                                     {{-- alt="Foto de {{ $mascota->nombre }}" --}}
+                                     style="height: 230px; object-fit: cover;">
+                            {{-- @else --}}
+                                <div class="bg-secondary-subtle d-flex align-items-center justify-content-center"
+                                     style="height: 230px;">
+                                    <i class="bi bi-image fs-1 text-secondary"></i>
+                                </div>
+                            {{-- @endif --}}
+
+                            <div class="card-body d-flex flex-column">
+
+                                <h4 class="card-title">
+                                    {{-- {{ $mascota->nombre }} --}}
+
+                                    <i class="bi bi-gender-ambiguous text-primary"></i>
+                                </h4>
+
+                                <div class="mb-2">
+                                    <span class="badge bg-info text-dark">
+                                        {{-- {{ $mascota->especie }} --}}
+                                    </span>
+                                </div>
+
+                                <p class="text-secondary mb-2">
+                                    {{-- {{ $mascota->edad }} -
+                                    {{ $mascota->tamaño }} --}}
+                                </p>
+
+                                <p class="card-text">
+                                    {{-- {{ $mascota->descripcion }} --}}
+                                </p>
+
+                                {{-- <a href="{{ route('mascotas.show', $mascota->id) }}"
+                                   class="btn btn-success mt-auto"
+                                   style="background-color: #20583F;">
+                                    Ver detalles
+                                </a> --}}
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                {{-- @empty --}}
+
+                    <div class="col-12">
+                        <div class="alert alert-info">
+                            <i class="bi bi-search"></i>
+                            No hay mascotas publicadas con esos criterios.
                         </div>
                     </div>
-                </div>
-                <div class="col-12 col-md-3">
-                    <div class="card mascota-card">
-                        <img src="{{ asset('images/tortuga.jpg') }}" class="card-img-top mascota-img" alt="tortuga">
-                        <div class="card-body">
-                            <h3>Tortuga</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-3">
-                    <div class="card mascota-card">
-                        <img src="{{ asset('images/nieve.jpg') }}" class="card-img-top mascota-img" alt="nieve">
-                        <div class="card-body">
-                            <h3>Nieve</h3>
-                        </div>
-                    </div>
-                </div>                    
-                    
-                </div>
+
+                {{-- @endforelse --}}
+
+            </div>
+
+            <!-- PAGINACIÓN -->
+            <div class="mt-4">
+                {{-- {{ $mascotas->links() }} --}}
+            </div>
 
         </main>
+    </div>
+</div>
 
-
-
-
-
-
-
-
-
-        </div>
-
-
-
-
-
-
-
-
-
-
-   </div>
-
-
-
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const showBtn = document.getElementById("show");
-        const sidebar = document.querySelector(".sidebar");
-
-        // Prevenir la recarga de página al hacer clic en el botón
-        showBtn.addEventListener("click", function (e) {
-            e.preventDefault();
-            
-            // Alterna la visibilidad del sidebar en móvil
-            sidebar.classList.toggle("active-mobile");
-        });
-
-        // Opcional: Cerrar el menú al hacer clic fuera de él
-        document.addEventListener("click", function (e) {
-            if (!sidebar.contains(e.target) && !showBtn.contains(e.target)) {
-                sidebar.classList.remove("active-mobile");
-            }
-        });
-    });
-
-
-    const tabs = document.querySelectorAll(".tabs");
-
-    tabs.forEach(tab => {
-        tab.addEventListener("click", () => {
-
-            tabs.forEach(t => t.classList.remove("active"));
-
-         tab.classList.add("active");
-        });
-    });
-</script>
-
-
-
-
-
-
+</body>
 
 @endsection

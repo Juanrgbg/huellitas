@@ -36,7 +36,6 @@ class CreateCountController extends Controller
      */
     public function show(create_count $create_count)
     {
-        //
     }
 
     /**
