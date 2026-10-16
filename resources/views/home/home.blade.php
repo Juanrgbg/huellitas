@@ -25,10 +25,25 @@
       </ul>
       
       <div class="d-flex align-items-center justify-content-center gap-2 mt-2 mt-lg-0">
-        <button class="btn btn-link"><i class="bi bi-search text-success fs-5"></i></button>
-        <button class="btn btn-link"><i class="bi bi-person text-success fs-4"></i></button>
-        <button class="btn fw-bold text-white" style="background:#2C9678"><a style="text-decoration: none; color:white;" href="{{ route('login.index') }}">Iniciar Sesión</a></button>
-      </div>
+  <button class="btn btn-link"><i class="bi bi-search text-success fs-5"></i></button>
+
+  @guest
+    <a href="{{ route('login') }}" class="btn btn-link" aria-label="Iniciar sesión">
+      <i class="bi bi-person text-success fs-4"></i>
+    </a>
+    <a href="{{ route('login') }}" class="btn fw-bold text-white" style="background:#2C9678">
+      Iniciar Sesión
+    </a>
+  @endguest
+
+  @auth
+    <span class="text-success fw-semibold me-2">Hola, {{ auth()->user()->name }}</span>
+    <form method="POST" action="{{ route('logout') }}" class="d-inline">
+      @csrf
+      <button type="submit" class="btn btn-outline-success btn-sm">Cerrar sesión</button>
+    </form>
+  @endauth
+</div>
     </div>
   </div>
 </nav>

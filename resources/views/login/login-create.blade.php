@@ -39,25 +39,30 @@
             Bienvenido aqui podras registrarte,  para poder ayudar a  que mascotas encuentren un hogar.
           </p>
           {{-- Se encuentra el input de nombre --}}
-          <form>
+          <form method="POST" action="{{ route('register.store') }}">
+            @csrf
+
             <p class="">Nombre</p>
             <div class="input-group mb-3">
               <span class="input-group-text bg-white"><i class="bi bi-chat-text-fill text-success"></i></span>
-              <input type="name" class="form-control" placeholder="Ingresa tu nombre" aria-label="Nombre" required>
+              <input type="name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="Ingresa tu nombre" aria-label="Nombre" required>
+              @error('name') <div class="invalid-feedback">{{ $message }}</div>@enderror
             </div>
             
             {{-- Se encuentra el input de Apellido --}}
             <p class="mt-3">Apellido</p>
             <div class="input-group mb-3">
               <span class="input-group-text bg-white"><i class="bi bi-archive-fill text-success"></i></span>
-              <input type="apellido" class="form-control" placeholder="Ingresa tu apellido" aria-label="Apellido" required>
+              <input type="text" name="apellido" value="{{ old('apellido') }}" class="form-control @error('apellido') is-invalid @enderror" placeholder="Ingresa tu apellido" aria-label="Apellido" required>
+              @error('apellido') <div class="invalid-feedback">{{ $message }}</div>@enderror
             </div>
             
             {{-- Se encuentra el input del correo electronico --}}
             <p class="">Correo electronico</p>
             <div class="input-group mb-3">
               <span class="input-group-text bg-white"><i class="bi bi-envelope-fill text-success"></i></span>
-                <input type="email" class="form-control" placeholder="Ingresa tu correo electronico" aria-label="Apellido" required>
+                <input type="email" name="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror" placeholder="Ingresa tu correo electronico" aria-label="Apellido" required>
+                @error('email') <div class="invalid-feedback">{{ $message }}</div>@enderror
               </div>
               
               
@@ -65,14 +70,15 @@
               <p>Contraseña</p>
               <div class="input-group mb-3">
                 <span class="input-group-text bg-white"><i class="bi bi-key-fill text-success"></i></span>
-                <input type="password" id="clave" class="form-control" placeholder="Contraseña" aria-label="Contraseña" required>
+                <input type="password" name="password" id="clave" class="form-control @error('password') is-invalid @enderror" placeholder="Contraseña" aria-label="Contraseña" required>
+                @error('password') <div class="invalid-feedback">{{ $message }}</div>@enderror
               </div>
               
               {{-- Se encuentra el input de confirmacion de Contrasena --}}
               <p>Confirmar contraseña</p>
               <div class="input-group mb-3">
                 <span class="input-group-text bg-white"><i class="bi bi-lock-fill text-success"></i></span>
-                <input type="password" id="clave" class="form-control" placeholder="confirmar contraseña" aria-label="Contraseña" required>
+                <input type="password" name="password_confirmation" id="clave" class="form-control" placeholder="confirmar contraseña" aria-label="Contraseña" required>
               </div>
               
               
@@ -88,7 +94,7 @@
               
               
               
-              <a href="{{ route('create.create') }}"></a><button type="submit" class="btn btn-success btn-lg w-100 mb-3">Crear cuenta</button>
+              <button type="submit" class="btn btn-success btn-lg w-100 mb-3">Crear cuenta</button>
               
             </form>
             

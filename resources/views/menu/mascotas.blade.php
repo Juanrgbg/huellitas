@@ -42,15 +42,17 @@
                     <i class="bi bi-person-fill"></i> Perfil
                 </a>
 
-                <form action="#" method="POST">
+                @auth
+                <form action="{{ route('logout') }}" method="POST">
                     @csrf
                     <button type="submit"
-                            class="nav-link text-white rounded p-3 w-100 text-start"
-                            style="background-color: #196741;">
-                        <i class="bi bi-box-arrow-right"></i>
-                        Cerrar Sesión
-                    </button>
-                </form>
+                    class="nav-link text-white rounded p-3 w-100 text-start"
+                    style="background-color: #196741;">
+                    <i class="bi bi-box-arrow-right"></i>
+                    Cerrar Sesión
+                </button>
+            </form>
+            @endauth
 
             </nav>
         </aside>
