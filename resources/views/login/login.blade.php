@@ -40,15 +40,21 @@
               Bienvenido de nuevo, sigue ayudando a que más mascotas encuentren un hogar.
             </p>
 
-            <form>
+            <form method="POST" action="{{ route('login') }}">
+              @csrf
+
+              @if ($errors->any())
+                  <div class="alert alert-danger small">{{ $errors->first() }}</div>
+              @endif
+
               <div class="input-group mb-3">
                 <span class="input-group-text bg-white"><i class="bi bi-envelope-fill text-success"></i></span>
-                <input type="email" class="form-control" placeholder="Correo electrónico" aria-label="Correo electrónico" required>
+                <input type="email" name="email" value="{{ old('email') }}" class="form-control" placeholder="Correo electrónico" aria-label="Correo electrónico" required>
               </div>
 
               <div class="input-group mb-3">
                 <span class="input-group-text bg-white"><i class="bi bi-lock-fill text-success"></i></span>
-                <input type="password" id="clave" class="form-control" placeholder="Contraseña" aria-label="Contraseña" required>
+                <input type="password" name="password" id="clave" class="form-control" placeholder="Contraseña" aria-label="Contraseña" required>
                 <button type="button" style="color: #1F5639" class="btn btn-outline-success" aria-label="Mostrar contraseña"
                         onclick="const c=document.getElementById('clave');c.type=c.type==='password'?'text':'password'">
                   <i style="color: #1F5639" class="bi bi-eye"></i>
@@ -57,7 +63,7 @@
 
               <div class="d-flex justify-content-between align-items-center mb-4 small">
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="recordarme">
+                  <input class="form-check-input" type="checkbox" name="remember" id="recordarme">
                   <label class="form-check-label" for="recordarme">Recuérdame</label>
                 </div>
                 <a href="#" class="link-success text-decoration-none">¿Olvidaste tu contraseña?</a>
@@ -77,7 +83,7 @@
 
               <p class="text-center small text-body-secondary mb-0">
                 ¿No tienes una cuenta?
-                <a href="{{ route('create.index') }}" class="link-success fw-semibold">Regístrate</a>
+                <a href="{{ route('register') }}" class="link-success fw-semibold">Regístrate</a>
               </p>
             </form>
 

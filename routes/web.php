@@ -11,7 +11,18 @@ Route::get('/', function () {
     return view('home.home');
 })->name('home');
 
-Route::resource('login', LoginController::class);
-Route::resource('create', CreateCountController::class);
-Route::resource('mascotas', MenuMascotasController::class);
-Route::resource('anadirMascota', CreatepetsController::class);   
+//Solo visitantes sin sesion
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [LoginController::class, 'showLogin'])->name('login');
+    Route::post('/login', [LoginController::class, 'login']);
+
+    Route::get('/create', [CreateCountController::class, 'create'])->name('register');
+    Route::post('/create', [CreateCountController::class, 'store'])->name('register.store');
+});
+
+//Solo para usuarios con sesion iniciada
+Route::middleware('auth')->group(function () {
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+    Route::get('/mascotas', [MenuMascotasController::class, 'index'])->name('mascotas.index');
+    Route::resource('anadirMascota', CreatepetsController::class);   
+});
