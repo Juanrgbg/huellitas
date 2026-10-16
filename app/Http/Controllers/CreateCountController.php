@@ -42,7 +42,7 @@ class CreateCountController extends Controller
         Auth::login($user);
         $request->session()->regenerate();
 
-        return redirect()->route('mascotas.index');
+        return redirect()->route('home');
     }
 
     /**
