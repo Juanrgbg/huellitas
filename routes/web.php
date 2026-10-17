@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CreateCountController;
 use App\Http\Controllers\CreatepetsController;
+use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MenuMascotasController;
 use Illuminate\Support\Facades\Route;
@@ -13,6 +14,9 @@ Route::get('/', function () {
 
 //Solo visitantes sin sesion
 Route::middleware('guest')->group(function () {
+    Route::get('/auth/google', [GoogleController::class, 'redirect'])->name('google.redirect');
+    Route::get('/auth/google/callback', [GoogleController::class, 'callback'])->name('google.callback');
+
     Route::get('/login', [LoginController::class, 'showLogin'])->name('login');
     Route::post('/login', [LoginController::class, 'login']);
 

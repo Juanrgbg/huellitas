@@ -37,7 +37,27 @@
   @endguest
 
   @auth
-    <span class="text-success fw-semibold me-2">Hola, {{ auth()->user()->name }}</span>
+    
+    @php $usuario = auth()->user(); @endphp 
+
+    <a href="#" class="d-flex align-items-center gap-2 text-decoration-none me-2">
+      @if ($usuario->avatar)
+        <img src="{{ $usuario->avatar }}"
+        alt="Foto de {{ $usuario->name }}"
+        width="40" height="40"
+        class="rounded-circle object-fit-cover border border-2 border-success"
+        referrerpolicy="no-referrer">
+
+      @else
+      <span class="rounded-circle d-inline-flex align-items-center justify-content-center text-white fw-bold"
+      style="width:40px; height:40px; background:#2C9678;">
+      {{ $usuario->initials() }}
+    </span>
+    @endif
+
+    <span class="text-success fw-semibold">Hola, {{ $usuario->name }}</span>
+    </a>
+
     <form method="POST" action="{{ route('logout') }}" class="d-inline">
       @csrf
       <button type="submit" class="btn btn-outline-success btn-sm">Cerrar sesión</button>

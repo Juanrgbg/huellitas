@@ -86,9 +86,9 @@
                 <hr class="flex-grow-1 m-0">
               </div>
 
-              <button type="button" class="btn btn-outline-secondary w-100 mb-4">
+              <a href="{{ route('google.redirect') }}" class="btn btn-outline-secondary w-100 mb-4">
                 <i class="bi bi-google me-2"></i>Continuar con Google
-              </button>
+              </a>
 
               <p class="text-center small text-body-secondary mb-0">
                 ¿No tienes una cuenta?
