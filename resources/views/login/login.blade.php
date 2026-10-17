@@ -18,15 +18,24 @@
         <h1 class="display-5 fw-bold text-success mb-1"></h1>
         <p class="fw-semibold text-success-emphasis mb-4"></p>
 
-        
         <style>
-          .atras {
-            position: absolute;
-            z-index: -1;
-            max-width: auto;
-            height: auto;
-          }
+        .atras {
+          position: fixed;          
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100vh;
+          height: 100dvh;           /* en celular respeta la barra del navegador */
+          object-fit: cover;        
+          object-position: center top; 
+          z-index: -1;
+        }
 
+        @media (max-width: 768px) {
+          .atras {
+            object-position: 70% center; 
+          }
+        }
         </style>
       </section>
 

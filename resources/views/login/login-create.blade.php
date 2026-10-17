@@ -81,19 +81,7 @@
                 <input type="password" name="password_confirmation" id="clave" class="form-control" placeholder="confirmar contraseña" aria-label="Contraseña" required>
               </div>
               
-              
-              
-              
-              {{--  recuadro de check para confirmar el recordar cuenta --}}
-              <div class="d-flex justify-content-between align-items-center mb-4 small">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="recordarme">
-                  <label class="form-check-label" for="recordarme">Recuérdame</label>
-                </div>
-              </div>
-              
-              
-              
+
               <button type="submit" class="btn btn-success btn-lg w-100 mb-3">Crear cuenta</button>
               
             </form>
