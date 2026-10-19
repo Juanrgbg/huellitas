@@ -2,12 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+
 
 class ProfileController extends Controller
 {
     public function profile()
     {
-        return view('menu.perfil');
+        return view('menu.profile');
+    }
+
+
+
+    public function edit()
+    {
+        return view('profile.profileEdit');
     }
 }

@@ -5,6 +5,7 @@ use App\Http\Controllers\CreatepetsController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MenuMascotasController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -28,5 +29,7 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::get('/mascotas', [MenuMascotasController::class, 'index'])->name('mascotas.index');
-    Route::resource('anadirMascota', CreatepetsController::class);   
+    Route::resource('anadirMascota', CreatepetsController::class);
+    Route::get('/perfil', [ProfileController::class, 'profile'])->name('profile.index');
+    Route::get('profileEdit', [ProfileController::class, 'edit'])->name('profile.profileEdit');
 });

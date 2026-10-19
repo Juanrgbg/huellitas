@@ -36,7 +36,7 @@
                     <i class="bi bi-plus-circle"></i> Añadir Mascota
                 </a>
 
-                <a href="#"
+                <a href="{{ route('profile.index') }}"
                    class="nav-link text-white rounded p-3"
                    style="background-color: #196741;">
                     <i class="bi bi-person-fill"></i> Perfil

@@ -10,14 +10,6 @@
 
         <img src="{{ asset( 'images/login/login-gato-perro.jpeg') }}" alt="fotito" class="atras">
 
-  <main class="container min-vh-100 d-flex align-items-center py-4">
-    <div class="row w-100 align-items-center g-4 mx-0">
-
-      <!-- Marca / ilustración -->
-      <section class="col-lg-6 text-center">
-        <h1 class="display-5 fw-bold text-success mb-1"></h1>
-        <p class="fw-semibold text-success-emphasis mb-4"></p>
-
         <style>
         .atras {
           position: fixed;          
@@ -37,6 +29,14 @@
           }
         }
         </style>
+
+  <main class="container min-vh-100 d-flex align-items-center py-4">
+    <div class="row w-100 align-items-center g-4 mx-0">
+
+      <!-- Marca / ilustración -->
+      <section class="col-lg-6 text-center">
+        <h1 class="display-5 fw-bold text-success mb-1"></h1>
+        <p class="fw-semibold text-success-emphasis mb-4"></p>
       </section>
 
       <!-- Tarjeta de login -->
