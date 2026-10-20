@@ -9,8 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    {{-- El @yield('title tiene como funcion heredar el titulo delas otras views') --}}
-    <title>@yield('title')</title>
+    <title>Mi perfil</title>
 </head>
 <style>
     /* Se */
@@ -62,14 +61,24 @@
 
                     {{-- Foto y nombre --}}
                     <div class="text-center mb-4">
-                        <h3 class="fw-bold mb-1">
-                            {{-- {{ $usuario->name }} --}}
-                        </h3>
-
-                        <span class="badge rounded-pill px-3 py-2"
-                              style="background-color: #2C9678;">
-                            Usuario registrado
+                       @if ($usuario->avatar)
+                            <img src="{{ $usuario->avatar }}"
+                                alt="Foto de {{ $usuario->name }}"
+                                width="110" height="110"
+                                class="rounded-circle object-fit-cover border border-3 border-success mb-3"
+                                referrerpolicy="no-referrer">
+                        @else
+                            <span class="rounded-circle d-inline-flex align-items-center justify-content-center text-white fw-bold fs-1 mb-3"
+                            style="width:110px; height:110px; background:#2C9678;">
+                            {{ $usuario->initials() }}
                         </span>
+                        @endif
+
+                        <h3 class="fw-bold mb-1">{{ trim($usuario->name . ' ' . $usuario->apellido) }}</h3>
+
+                        <span class="badge rounded-pill px-3 py-2" style="background-color: #2C9678">
+                            {{ $usuario->google_id ? 'Cuenta de google' : 'Usuario registrado' }}
+                        </span> 
                     </div>
 
                     <hr class="mb-4">
@@ -88,7 +97,7 @@
                                 Nombre completo
                             </label>
                             <p class="fw-semibold mb-0">
-                                {{-- {{ $usuario->name }} --}}
+                                {{ trim($usuario->name . ' ' . $usuario->apellido) }}
                             </p>
                         </div>
 
@@ -97,7 +106,7 @@
                                 Correo electrónico
                             </label>
                             <p class="fw-semibold mb-0">
-                                {{-- {{ $usuario->email }} --}}
+                                {{ $usuario->email }}
                             </p>
                         </div>
 
@@ -106,7 +115,7 @@
                                 Teléfono / WhatsApp
                             </label>
                             <p class="fw-semibold mb-0">
-                                {{-- {{ $usuario->phone ?: 'No registrado' }} --}}
+                                {{ $usuario->phone ?: 'No registrado' }}
                             </p>
                         </div>
 
@@ -115,7 +124,7 @@
                                 Ciudad
                             </label>
                             <p class="fw-semibold mb-0">
-                                {{-- {{ $usuario->city ?: 'No registrada' }} --}}
+                                {{ $usuario->city ?: 'No registrada' }}
                             </p>
                         </div>
 
@@ -124,9 +133,9 @@
                                 Fecha de registro
                             </label>
                             <p class="fw-semibold mb-0">
-                                {{-- {{ $usuario->created_at
-                                    ? $usuario->created_at->format('d/m/Y')
-                                    : 'No disponible' }} --}}
+                                {{ $usuario->created_at
+                                    ?->format('d/m/Y') ??
+                                    'No disponible' }}
                             </p>
                         </div>
 
@@ -170,4 +179,8 @@
 
         </div>
     </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
 

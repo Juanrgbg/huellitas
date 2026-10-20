@@ -48,15 +48,21 @@
             </div>
 
             {{-- Errores de validación --}}
+                @if ($errors->any())
                 <div class="alert alert-danger">
                     <strong>Revisa los siguientes campos:</strong>
-                    <ul class="mb-0 mt-2">
+                        <ul class="mb-0 mt-2">
+                @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                 @endforeach
+                        </ul>
                 </div>
+                @endif
 
             <div class="card border-0 shadow-sm rounded-4">
                 <div class="card-body p-4 p-md-5">
 
-                    <form action=""
+                    <form action="{{ route('profile.update') }}"
                           method="POST"
                           enctype="multipart/form-data">
 
@@ -65,13 +71,24 @@
 
                         {{-- Foto actual --}}
                         <div class="text-center mb-4">
+                        @if ($usuario->avatar)
+                            <img src="{{ $usuario->avatar }}" alt="Foto de perfil" width="100" height="100"
+                            class="rounded-circle object-fit-cover border border-3 border-success"
+                            referrerpolicy="no-referrer">
+                        @else
+                            <span class="rounded-circle d-inline-flex align-items-center justify-content-center text-white fw-bold fs-1"
+                            style="width:100px; height:100px; background:#2C9678;">
+                            {{ $usuario->initials() }}
+                            </span>
+                        @endif
+                        </div>
 
 
 
                         {{-- Nombre --}}
                         <div class="mb-3">
                             <label for="name" class="form-label fw-semibold">
-                                Nombre completo
+                                Nombre
                             </label>
 
                             <input
@@ -79,14 +96,37 @@
                                 name="name"
                                 id="name"
                                 class="form-control @error('name') is-invalid @enderror"
-                                value=""
+                                value="{{ old('name', $usuario->name) }}"
                                 maxlength="255"
                                 required
                             >
 
                             @error('name')
                                 <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
 
+                        {{-- Apellido --}}
+                        <div class="mb-3">
+                            <label for="apellido" class="form-label fw-semibold">
+                                Apellido
+                            </label>
+
+                            <input
+                                type="text"
+                                name="apellido"
+                                id="apellido"
+                                class="form-control @error('apellido') is-invalid @enderror"
+                                value="{{ old('apellido', $usuario->apellido) }}"
+                                maxlength="255"
+                                required
+                            >
+
+                            @error('apellido')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
                                 </div>
                             @enderror
                         </div>
@@ -102,13 +142,15 @@
                                 name="email"
                                 id="email"
                                 class="form-control @error('email') is-invalid @enderror"
-                                value=""
+                                value="{{ old('email', $usuario->email) }}"
                                 maxlength="255"
                                 required
+                                @readonly($usuario->google_id)
                             >
 
                             @error('email')
                                 <div class="invalid-feedback">
+                                    {{ $message }}
                                 </div>
                             @enderror
                         </div>
@@ -127,13 +169,14 @@
                                     name="phone"
                                     id="phone"
                                     class="form-control @error('phone') is-invalid @enderror"
-                                    value=""
+                                    value="{{ old('phone', $usuario->phone) }}"
                                     maxlength="20"
                                     placeholder="Ej. 3001234567"
                                 >
 
                                 @error('phone')
                                     <div class="invalid-feedback">
+                                        {{ $message }}
                                     </div>
                                 @enderror
                             </div>
@@ -150,13 +193,14 @@
                                     name="city"
                                     id="city"
                                     class="form-control @error('city') is-invalid @enderror"
-                                    value=""
+                                    value="{{ old('city', $usuario->city) }}"
                                     maxlength="100"
                                     placeholder="Ej. Riosucio"
                                 >
 
                                 @error('city')
                                     <div class="invalid-feedback">
+                                        {{ $message }}
                                     </div>
                                 @enderror
                             </div>
@@ -181,7 +225,7 @@
                         <div class="d-flex flex-column
                                     flex-sm-row justify-content-end gap-2">
 
-                            <a href=""
+                            <a href="{{ route('profile.index') }}"
                                class="btn btn-outline-secondary px-4">
                                 Cancelar
                             </a>

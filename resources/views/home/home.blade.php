@@ -40,7 +40,7 @@
     
     @php $usuario = auth()->user(); @endphp 
 
-    <a href="#" class="d-flex align-items-center gap-2 text-decoration-none me-2">
+    <a href="{{ route('profile.index') }}" class="d-flex align-items-center gap-2 text-decoration-none me-2">
       @if ($usuario->avatar)
         <img src="{{ $usuario->avatar }}"
         alt="Foto de {{ $usuario->name }}"

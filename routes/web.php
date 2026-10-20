@@ -32,4 +32,5 @@ Route::middleware('auth')->group(function () {
     Route::resource('anadirMascota', CreatepetsController::class);
     Route::get('/perfil', [ProfileController::class, 'profile'])->name('profile.index');
     Route::get('profileEdit', [ProfileController::class, 'edit'])->name('profile.profileEdit');
+    Route::put('profileEdit', [ProfileController::class, 'update'])->name('profile.update');
 });
