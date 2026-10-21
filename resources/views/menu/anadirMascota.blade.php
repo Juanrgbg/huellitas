@@ -55,9 +55,9 @@
             @auth
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
-            <a href="{{ route('logout') }}" class="nav-link text-white rounded p-3" style="background-color: #196741;">
+            <button class="nav-link text-white rounded p-3" style="background-color: #196741;">
                 <i class="bi bi-box-arrow-right"></i> Cerrar sesion
-            </a>
+            </button>
             </form>
             @endauth
 
