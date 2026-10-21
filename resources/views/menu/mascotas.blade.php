@@ -61,6 +61,14 @@
         <main class="col-12 col-md-9 col-xl-10 p-4 p-lg-5"
               style="background-color: #F5F1E8;">
 
+              {{-- MENSAJE DE EXITO DE SESION --}}
+              @if (session('success'))
+                <div class="alert alert-success alert-dismissible fade show">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            @endif
+
             <!-- TÍTULO Y BUSCADOR -->
             <div class="row align-items-center mb-4">
                 <div class="col-12 col-lg-7">
@@ -118,45 +126,48 @@
             <!-- MASCOTAS PUBLICADAS -->
             <div class="row g-4">
 
-                {{-- @forelse ($mascotas as $mascota) --}}
+                @forelse ($mascotas as $mascota)
 
                     <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
 
                         <div class="card h-100 shadow-sm">
 
-                            {{-- @if ($mascota->imagen) --}}
-                                <img src="#"
+                            @if ($mascota->imagen)
+                                <img src="{{ asset('storage/' . $mascota->imagen) }}"
                                      class="card-img-top"
-                                     {{-- alt="Foto de {{ $mascota->nombre }}" --}}
+                                     alt="Foto de {{ $mascota->nombre }}"
                                      style="height: 230px; object-fit: cover;">
-                            {{-- @else --}}
+                            @else
                                 <div class="bg-secondary-subtle d-flex align-items-center justify-content-center"
                                      style="height: 230px;">
                                     <i class="bi bi-image fs-1 text-secondary"></i>
                                 </div>
-                            {{-- @endif --}}
+                            @endif
 
                             <div class="card-body d-flex flex-column">
 
                                 <h4 class="card-title">
-                                    {{-- {{ $mascota->nombre }} --}}
-
-                                    <i class="bi bi-gender-ambiguous text-primary"></i>
+                                    {{ $mascota->nombre }}
+                                    @if ($mascota->sexo === 'Macho')
+                                        <i class="bi bi-gender-male text-primary"></i>
+                                    @else
+                                        <i class="bi bi-gender-female text-danger"></i>
+                                    @endif
                                 </h4>
 
                                 <div class="mb-2">
                                     <span class="badge bg-info text-dark">
-                                        {{-- {{ $mascota->especie }} --}}
+                                        {{ $mascota->especie }}
                                     </span>
                                 </div>
 
                                 <p class="text-secondary mb-2">
-                                    {{-- {{ $mascota->edad }} -
-                                    {{ $mascota->tamaño }} --}}
+                                    {{ $mascota->edad }} -
+                                    {{ $mascota->tamano }}
                                 </p>
 
                                 <p class="card-text">
-                                    {{-- {{ $mascota->descripcion }} --}}
+                                {{ \Illuminate\Support\Str::limit($mascota->descripcion, 100) }}
                                 </p>
 
                                 {{-- <a href="{{ route('mascotas.show', $mascota->id) }}"
@@ -170,7 +181,7 @@
 
                     </div>
 
-                {{-- @empty --}}
+                @empty
 
                     <div class="col-12">
                         <div class="alert alert-info">
@@ -179,13 +190,13 @@
                         </div>
                     </div>
 
-                {{-- @endforelse --}}
+                @endforelse
 
             </div>
 
             <!-- PAGINACIÓN -->
             <div class="mt-4">
-                {{-- {{ $mascotas->links() }} --}}
+                {{ $mascotas->links() }}
             </div>
 
         </main>

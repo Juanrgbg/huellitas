@@ -10,9 +10,22 @@ class MenuMascotasController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('menu.mascotas');
+        $mascotas = MenuMascotas::query()
+            ->when($request->filled('especie'), fn($q) => $q->where('especie', $request->especie))
+            ->when($request->filled('buscar'), function ($q) use ($request) {
+                $q->where(function ($q2) use ($request) {
+                    $q2->where('nombre', 'like', '%' . $request->buscar . '%')
+                        ->orWhere('raza', 'like', '%' . $request->buscar . '%');
+                });
+            })
+
+        ->latest()
+        ->paginate(12)
+        ->withQueryString();
+
+        return view('menu.mascotas', compact('mascotas'));
     }
 
     /**

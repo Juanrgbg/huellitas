@@ -29,7 +29,7 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::get('/mascotas', [MenuMascotasController::class, 'index'])->name('mascotas.index');
-    Route::resource('anadirMascota', CreatepetsController::class);
+    Route::resource('anadirMascota', CreatepetsController::class)->only(['index', 'store']);
     Route::get('/perfil', [ProfileController::class, 'profile'])->name('profile.index');
     Route::get('profileEdit', [ProfileController::class, 'edit'])->name('profile.profileEdit');
     Route::put('profileEdit', [ProfileController::class, 'update'])->name('profile.update');
