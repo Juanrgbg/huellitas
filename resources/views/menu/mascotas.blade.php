@@ -7,66 +7,78 @@
 
 <div class="container-fluid">
     <div class="row min-vh-100">
-            <!-- MENÚ LATERAL -->
-    <aside class="col-12 col-md-3 col-xl-2 text-white p-3"
-    style="background-color: #20583F;">
+        <!-- MENÚ LATERAL -->
+        <aside class="col-12 col-md-3 col-xl-2 text-white p-3"
+               style="background-color: #20583F;">
 
-    {{-- Cabecera: título + botón hamburguesa --}}
-    <div class="d-flex justify-content-between align-items-center mb-md-4">
-        <h2 class="fw-bold fst-italic mb-0 fs-4 fs-md-2">
-            <i class="bi bi-house-heart-fill"></i>
-            Huellitas a casa
-        </h2>
+            <!-- Cabecera -->
+            <div class="d-flex justify-content-between align-items-center mb-md-4">
+                <h2 class="fw-bold fst-italic mb-0 fs-4">
+                    <i class="bi bi-house-heart-fill"></i>
+                    Huellitas a casa
+                </h2>
 
-        {{-- Solo visible en móvil (oculto desde md hacia arriba) --}}
-        <button class="btn btn-outline-light d-md-none"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#menuLateral"
-                aria-controls="menuLateral"
-                aria-expanded="false"
-                aria-label="Abrir menú">
-            <i class="bi bi-list fs-4"></i>
-        </button>
-    </div>
+                <button class="btn btn-outline-light d-md-none"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#menuLateral"
+                        aria-controls="menuLateral"
+                        aria-expanded="false"
+                        aria-label="Abrir menú">
+                    <i class="bi bi-list fs-4"></i>
+                </button>
+            </div>
 
-    {{-- Menú: colapsado en móvil, siempre visible desde md (d-md-block) --}}
-    <div class="collapse d-md-block mt-3 mt-md-0" id="menuLateral">
-        <nav class="nav flex-column gap-1">
+            <!-- Navegación -->
+            <div class="collapse d-md-block mt-3 mt-md-0" id="menuLateral">
+                <nav class="nav flex-column gap-1">
 
-            <a href="{{ route('home') }}" class="nav-link text-white rounded p-3" style="background-color: #196741;">
-                <i class="bi bi-house"></i> Inicio
-            </a>
+                    <a href="{{ route('home') }}"
+                       class="nav-link text-white rounded p-3"
+                       style="background-color: #196741;">
+                        <i class="bi bi-house"></i> Inicio
+                    </a>
 
-            <a href="{{ route('mascotas.index') }}" class="nav-link text-white rounded p-3" style="background-color: #196741;">
-                <i class="bi bi-paw-fill"></i> Mascotas
-            </a>
+                    <a href="{{ route('mascotas.index') }}"
+                       class="nav-link text-white rounded p-3"
+                       style="background-color: #196741;">
+                        <i class="bi bi-paw-fill"></i> Mascotas
+                    </a>
 
-            <a href="{{ route('anadirMascota.index') }}" class="nav-link text-white rounded p-3" style="background-color: #196741;">
-                <i class="bi bi-plus-circle"></i> Publica tu Mascota
-            </a>
-            
-            <a href="{{ route('editpets.update') }}" class="nav-link text-white rounded p-3" style="background-color: #196741">
-                Editar tus Publicaciones 
-            </a>
+                    <a href="{{ route('anadirMascota.index') }}"
+                       class="nav-link text-white rounded p-3"
+                       style="background-color: #196741;">
+                        <i class="bi bi-plus-circle"></i> Publica tu mascota
+                    </a>
 
-            <a href="{{ route('profile.index') }}" class="nav-link text-white rounded p-3" style="background-color: #196741;">
-                <i class="bi bi-person-fill"></i> Perfil
-            </a>
+                    <a href="{{ route('editpets.update') }}"
+                       class="nav-link text-white rounded p-3"
+                       style="background-color: #196741;">
+                        <i class="bi bi-pencil-square"></i> Editar tus publicaciones
+                    </a>
 
-            @auth
-                <form action="{{ route('logout') }}" method="POST">
-                    @csrf
-            <button class="nav-link text-white rounded p-3" style="background-color: #196741;">
-                <i class="bi bi-box-arrow-right"></i> Cerrar sesion
-            </button>
-            </form>
-            @endauth
+                    <a href="{{ route('profile.index') }}"
+                       class="nav-link text-white rounded p-3"
+                       style="background-color: #196741;">
+                        <i class="bi bi-person-fill"></i> Perfil
+                    </a>
 
-        </nav>
-    </div>
-</aside>
+                    @auth
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
 
+                            <button type="submit"
+                                    class="nav-link text-white rounded p-3 w-100 text-start"
+                                    style="background-color: #196741;">
+                                <i class="bi bi-box-arrow-right"></i>
+                                Cerrar sesión
+                            </button>
+                        </form>
+                    @endauth
+
+                </nav>
+            </div>
+        </aside>
 
         <!-- CONTENIDO PRINCIPAL -->
         <main class="col-12 col-md-9 col-xl-10 p-4 p-lg-5"

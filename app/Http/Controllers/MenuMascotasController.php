@@ -65,7 +65,20 @@ class MenuMascotasController extends Controller
      */
     public function update(Request $request, MenuMascotas $menuMascotas)
     {
-        return view('menu.editpets');
+        $mascotas = MenuMascotas::query()
+            ->when($request->filled('especie'), fn($q) => $q->where('especie', $request->especie))
+            ->when($request->filled('buscar'), function ($q) use ($request) {
+                $q->where(function ($q2) use ($request) {
+                    $q2->where('nombre', 'like', '%' . $request->buscar . '%')
+                        ->orWhere('raza', 'like', '%' . $request->buscar . '%');
+                });
+            })
+
+        ->latest()
+        ->paginate(12)
+        ->withQueryString();
+
+        return view('menu.editpets', compact('mascotas'));
     }
 
     /**
