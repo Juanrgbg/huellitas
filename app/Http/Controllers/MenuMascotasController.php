@@ -57,7 +57,7 @@ class MenuMascotasController extends Controller
      */
     public function edit(MenuMascotas $menuMascotas)
     {
-        //
+        // 
     }
 
     /**
@@ -65,7 +65,7 @@ class MenuMascotasController extends Controller
      */
     public function update(Request $request, MenuMascotas $menuMascotas)
     {
-        //
+        return view('menu.editpets');
     }
 
     /**

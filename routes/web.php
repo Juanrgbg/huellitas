@@ -33,4 +33,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/perfil', [ProfileController::class, 'profile'])->name('profile.index');
     Route::get('profileEdit', [ProfileController::class, 'edit'])->name('profile.profileEdit');
     Route::put('profileEdit', [ProfileController::class, 'update'])->name('profile.update');
+    Route::get('editpets', [MenuMascotasController::class, 'update'])->name('editpets.update');
 });

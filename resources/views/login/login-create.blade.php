@@ -11,25 +11,24 @@
   
   {{-- Se pospone la imagen para que quede detras de el contenedor que guarda el formulario de registrar usuario  --}}
     <style>
-      <style>
-        .atras {
-          position: fixed;          
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100vh;
-          height: 100dvh;           /* en celular respeta la barra del navegador */
-          object-fit: cover;        
-          object-position: center top; 
-          z-index: -1;
-        }
 
-        @media (max-width: 768px) {
-          .atras {
-            object-position: 70% center; 
+      .detras {
+        position: fixed;          
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        height: 100dvh;           /* en celular respeta la barra del navegador */
+        object-fit: cover;        
+        object-position: center top; 
+        z-index: -1;
+      }
+
+      @media (max-width: 768px) {
+        .detras {
+          object-position: 70% center; 
           }
-        }
-        </style>
+      }
     </style>
 
 <main class="container min-vh-100 d-flex align-items-center py-4">

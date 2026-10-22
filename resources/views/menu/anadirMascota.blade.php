@@ -10,8 +10,8 @@
     <div class="row min-vh-100">
 
         <!-- MENÚ LATERAL -->
-        <aside class="col-12 col-md-3 col-xl-2 text-white p-3"
-       style="background-color: #20583F;">
+    <aside class="col-12 col-md-3 col-xl-2 text-white p-3"
+    style="background-color: #20583F;">
 
     {{-- Cabecera: título + botón hamburguesa --}}
     <div class="d-flex justify-content-between align-items-center mb-md-4">
@@ -45,7 +45,7 @@
             </a>
 
             <a href="{{ route('anadirMascota.index') }}" class="nav-link text-white rounded p-3" style="background-color: #196741;">
-                <i class="bi bi-plus-circle"></i> Añadir Mascota
+                <i class="bi bi-plus-circle"></i> Publica tu mascota
             </a>
 
             <a href="{{ route('profile.index') }}" class="nav-link text-white rounded p-3" style="background-color: #196741;">
@@ -66,7 +66,6 @@
 </aside>
 
         <!-- CONTENIDO DE FORMULARIO CREAR PUBLICACION O MASCOTA -->
-
         <main class=" row-cols-1  col-md-12 col-xl-10 p-4 p-lg-5" 
               style="background-color: #F5F1E8;">
 
@@ -77,7 +76,7 @@
                         <div class="card border-0 shadow-sm rounded-4">
                             <div class="card-body p-4 p-lg-5">
 
-                                    <h1 class=" fw-bold text-verde">Publicar mascota</h1>
+                                    <h1 class=" fw-bold text-verde">Dar en adopcion</h1>
 
                                     <p class="text-secondary">Completa la información para que más personas puedan conocer y adoptar a tu mascota.</p>
 
@@ -113,7 +112,7 @@
                                         <label class="form-label small fw-semibold">Especie *</label>
                                         <select class="form-select @error('especie') is-invalid @enderror" name="especie" required>
                                             <option value="" disabled @selected(! old('especie'))>Selecciona una especie</option>
-                                            @foreach (['Perro', 'Gato', 'Exótica'] as $opcion)
+                                            @foreach (['Canino', 'Felino', 'Exótica'] as $opcion)
                                                 <option value="{{ $opcion }}" @selected(old('especie') === $opcion)>{{ $opcion }}</option>
                                             @endforeach
                                         </select>
@@ -202,10 +201,10 @@
                                     <p class="mb-3"><i class="bi bi-telephone me-2"></i>{{ auth()->user()->phone ?: 'Sin teléfono registrado' }}</p>
 
                                     @unless (auth()->user()->phone)
-                                      <div class="alert alert-warning small">
+                                    <div class="alert alert-warning small">
                                         Agrega tu teléfono para que puedan contactarte.
-                                     <a href="{{ route('profile.profileEdit') }}">Editar perfil</a>
-                                      </div>
+                                    <a href="{{ route('profile.profileEdit') }}">Editar perfil</a>
+                                    </div>
                                     @endunless
 
                                     <button class="btn btn-huella w-100 py-2 text-light" style="background-color: #2C9678; border: none;">
