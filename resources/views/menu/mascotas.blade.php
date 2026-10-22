@@ -5,6 +5,36 @@
 
 @section('content')
 
+
+<img src="{{ asset('images/fondo') }}" alt="fondito" class="atras">
+<style>
+    /* Se */
+    body {
+        font-family: "Baloo 2", sans-serif;
+        
+    }
+    
+
+        .atras {
+          position: fixed;          
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100vh;
+          height: 100dvh;           /* en celular respeta la barra del navegador */
+          object-fit: cover;        
+          object-position: center top; 
+          z-index: -1;
+        }
+
+        @media (max-width: 768px) {
+          .atras {
+            object-position: 70% center; 
+          }
+        }
+
+</style>
+
 <div class="container-fluid">
     <div class="row min-vh-100">
         <!-- MENÚ LATERAL -->
@@ -42,7 +72,7 @@
                     <a href="{{ route('mascotas.index') }}"
                        class="nav-link text-white rounded p-3"
                        style="background-color: #196741;">
-                        <i class="bi bi-paw-fill"></i> Mascotas
+                        <i class="bi bi-house-heart-fill"></i> Mascotas
                     </a>
 
                     <a href="{{ route('anadirMascota.index') }}"
@@ -54,7 +84,7 @@
                     <a href="{{ route('editpets.update') }}"
                        class="nav-link text-white rounded p-3"
                        style="background-color: #196741;">
-                        <i class="bi bi-pencil-square"></i> Editar tus publicaciones
+                        <i class="bi bi-pencil-square"></i> Editar publicaciones
                     </a>
 
                     <a href="{{ route('profile.index') }}"
@@ -200,8 +230,8 @@
                                         style="background-color: #20583F;"
                                         data-bs-toggle="modal"
                                         data-bs-target="#modalMascota{{ $mascota->id }}">
-                                    <i class="bi bi-eye"></i>
-                                    Ver detalles
+                                    
+                                    detalles
                                 </button>
 
                             </div>

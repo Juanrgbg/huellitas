@@ -41,7 +41,7 @@
                     <a href="{{ route('mascotas.index') }}"
                        class="nav-link text-white rounded p-3"
                        style="background-color: #196741;">
-                        <i class="bi bi-paw-fill"></i> Mascotas
+                        <i class="bi bi-house-heart-fill"></i> Mascotas
                     </a>
 
                     <a href="{{ route('anadirMascota.index') }}"
@@ -50,7 +50,7 @@
                         <i class="bi bi-plus-circle"></i> Publica tu mascota
                     </a>
 
-                    <a href="{{ route('mascotas.index') }}"
+                    <a href="{{ route('editpets.update') }}"
                        class="nav-link text-white rounded p-3"
                        style="background-color: #196741;">
                         <i class="bi bi-pencil-square"></i> Editar publicaciones
