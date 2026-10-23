@@ -17,7 +17,7 @@ class CreatepetsController extends Controller
     {
         $data = $request->validate([
             'nombre'      => ['required', 'string', 'max:100'],
-            'especie'     => ['required', Rule::in(['Canino', 'Felino', 'Exótica'])],
+            'especie'     => ['required', Rule::in(array_keys(MenuMascotas::ESPECIES))],
             'raza'        => ['nullable', 'string', 'max:100'],
             'edad'        => ['required', Rule::in(['Menos de 1 año', '1-3 años', '4+ años'])],
             'tamano'      => ['required', Rule::in(['Pequeño', 'Mediano', 'Grande'])],

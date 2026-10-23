@@ -81,7 +81,7 @@
                         <i class="bi bi-plus-circle"></i> Publica tu mascota
                     </a>
 
-                    <a href="{{ route('editpets.update') }}"
+                    <a href="{{ route('editpets.index') }}"
                        class="nav-link text-white rounded p-3"
                        style="background-color: #196741;">
                         <i class="bi bi-pencil-square"></i> Editar publicaciones
@@ -158,19 +158,11 @@
                     Todos
                 </a>
 
-                <a href="{{ route('mascotas.index', ['especie' => 'Perro']) }}"
-                   class="btn btn-success">
-                    Caninos
-                </a>
-
-                <a href="{{ route('mascotas.index', ['especie' => 'Gato']) }}"
-                   class="btn btn-success">
-                    Felinos
-                </a>
-
-                <a href="{{ route('mascotas.index', ['especie' => 'Exótica']) }}"
-                   class="btn btn-success">
-                    Especies Exóticas
+                @foreach (\App\Models\MenuMascotas::ESPECIES as $valor => $etiqueta)
+                    <a href="{{ route('mascotas.index', ['especie' => $valor]) }}" class="btn btn-success">
+                        {{ $etiqueta }}
+                    </a>
+                @endforeach         
                 </a>
             </div>
 
@@ -346,7 +338,7 @@
                                                     {{-- Icono --}}
                                                     Ubicacion
                                                 </h6>
-                                                <p> </p>
+                                                <p style="white-space: pre-line;">{{ $mascota->usuario->city ?: 'Sin ubicacion disponible' }}</p>
 
                                             </div>
 

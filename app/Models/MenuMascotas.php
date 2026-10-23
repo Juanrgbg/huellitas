@@ -15,4 +15,10 @@ class MenuMascotas extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public const ESPECIES = [
+        'Canino' => 'Caninos',
+        'Felino' => 'Felinos',
+        'Exótica' => 'Especies Exóticas',
+    ];
 }

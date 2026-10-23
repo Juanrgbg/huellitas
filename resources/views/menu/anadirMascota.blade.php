@@ -50,7 +50,7 @@
                         <i class="bi bi-plus-circle"></i> Publica tu mascota
                     </a>
 
-                    <a href="{{ route('editpets.update') }}"
+                    <a href="{{ route('editpets.index') }}"
                        class="nav-link text-white rounded p-3"
                        style="background-color: #196741;">
                         <i class="bi bi-pencil-square"></i> Editar publicaciones
@@ -124,9 +124,9 @@
                                                     <label class="form-label small fw-semibold">Especie *</label>
                                                     <select class="form-select @error('especie') is-invalid @enderror" name="especie" required>
                                                         <option value="" disabled @selected(! old('especie'))>Selecciona una especie</option>
-                                                        @foreach (['Canino', 'Felino', 'Exótica'] as $opcion)
-                                                            <option value="{{ $opcion }}" @selected(old('especie') === $opcion)>{{ $opcion }}</option>
-                                                        @endforeach
+                                                        @foreach (array_keys(\App\Models\MenuMascotas::ESPECIES) as $opcion)
+                                                        <option value="{{ $opcion }}" @selected(old('especie') === $opcion)>{{ $opcion }}</option>
+                                                    @endforeach
                                                     </select>
                                                     @error('especie') <div class="invalid-feedback">{{ $message }}</div> @enderror
                                                 </div>

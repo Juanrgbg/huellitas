@@ -52,7 +52,7 @@
                         <i class="bi bi-plus-circle"></i> Publica tu mascota
                     </a>
 
-                    <a href="{{ route('editpets.update') }}"
+                    <a href="{{ route('editpets.index') }}"
                        class="nav-link text-white rounded p-3"
                        style="background-color: #196741;">
                         <i class="bi bi-pencil-square"></i> Editar publicaciones
@@ -126,25 +126,16 @@
 
             <!-- FILTROS -->
             <div class="d-flex flex-wrap gap-2 mb-4">
-                <a href="{{ route('mascotas.index') }}"
+                <a href="{{ route('editpets.index') }}"
                    class="btn btn-success">
                     Todos
                 </a>
 
-                <a href="{{ route('mascotas.index', ['especie' => 'Perro']) }}"
-                   class="btn btn-success">
-                    Caninos
-                </a>
-
-                <a href="{{ route('mascotas.index', ['especie' => 'Gato']) }}"
-                   class="btn btn-success">
-                    Felinos
-                </a>
-
-                <a href="{{ route('mascotas.index', ['especie' => 'Exótica']) }}"
-                   class="btn btn-success">
-                    Especies exóticas
-                </a>
+                @foreach (\App\Models\MenuMascotas::ESPECIES as $valor => $etiqueta)
+                    <a href="{{ route('editpets.index', ['especie' => $valor]) }}" class="btn btn-success">
+                        {{ $etiqueta }}
+                    </a>
+                @endforeach         
             </div>
 
             <!-- MASCOTAS PUBLICADAS -->
@@ -251,7 +242,7 @@
                                 </div>
 
                                 <!-- FORMULARIO DE EDICIÓN -->
-                                <form action="{{ route('editpets.update', $mascota->id) }}"
+                                <form action="{{ route('mascotas.update', $mascota->id) }}"
                                       method="POST"
                                       enctype="multipart/form-data">
 
@@ -285,23 +276,12 @@
                                             </label>
                                             
                                             <select id="especie{{ $mascota->id }}" name="especie" class="form-select" required>
-
-                                                <option value="Perro"
-                                                    {{ $mascota->especie == 'Perro' ? 'selected' : '' }}>
-                                                    Perro
+                                            @foreach (array_keys(\App\Models\MenuMascotas::ESPECIES) as $opcion)
+                                                <option value="{{ $opcion }}" @selected($mascota->especie === $opcion)>
+                                                    {{ $opcion }}
                                                 </option>
-                                                
-                                                <option value="Gato"
-                                                    {{ $mascota->especie == 'Gato' ? 'selected' : '' }}>
-                                                    Gato
-                                                </option>
-
-                                                <option value="Exótica"
-                                                {{ $mascota->especie == 'Exótica' ? 'selected' : '' }}>
-                                                Exótica
-                                            </option>
-                                            
-                                        </select>
+                                            @endforeach
+                                        </select>                                       
                                     </div>
                                 </div>
 
@@ -339,13 +319,11 @@
                                                     Edad
                                                 </label>
 
-                                                <input
-                                                    type="text"
-                                                    id="edad{{ $mascota->id }}"
-                                                    name="edad"
-                                                    class="form-control"
-                                                    value="{{ $mascota->edad }}"
-                                                    required>
+                                                <select id="edad{{ $mascota->id }}" name="edad" class="form-select" required>
+                                                @foreach (['Menos de 1 año', '1-3 años', '4+ años'] as $opcion)
+                                                    <option value="{{ $opcion }}" @selected($mascota->edad === $opcion)>{{ $opcion }}</option>
+                                                @endforeach
+                                                </select>
                                             </div>
 
                                         </div>
@@ -390,9 +368,19 @@
                                             </label>
                                             
                                             <textarea
-                                            id="descripcion{{ $mascota->id }}" name="descripcion" class="form-control" rows="4" style="height: 50px" required>{{ $mascota->descripcion }}</textarea>
+                                            id="descripcion{{ $mascota->id }}" name="descripcion" maxlength="500" class="form-control" rows="4" style="height: 50px" required>{{ $mascota->descripcion }}</textarea>
                                         </div>
                                         </div>
+                                        
+                                        {{-- CAMPO DE RAZA (NO ESTABA) --}}
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <label for="raza{{ $mascota->id }}" class="form-label fw-semibold">Raza</label>
+                                                <input type="text" id="raza{{ $mascota->id }}" name="raza"
+                                                    class="form-control" value="{{ $mascota->raza }}" maxlength="100">
+                                            </div>
+                                        </div>
+
                                         <!-- FOTO ACTUAL -->
                                         <div class="mb-3">
                                             <label class="form-label fw-semibold">
@@ -491,7 +479,7 @@
                                         Cancelar
                                     </button>
 
-                                    <form action=""
+                                    <form action="{{ route('mascotas.destroy', $mascota->id) }}"
                                           method="POST">
                                         @csrf
                                         @method('DELETE')
@@ -510,8 +498,18 @@
                 @empty
 
                     <div class="col-12">
-                        <div class="alert alert-info">
-                            No hay mascotas publicadas para mostrar.
+                        <div class="alert alert-info d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-2">
+                            <span>
+                                <i class="bi bi-info-circle"></i>
+                                @if (request()->filled('especie'))
+                                    No tienes mascotas de esa especie.
+                                @else
+                                    Aún no tienes mascotas publicadas.
+                                @endif
+                            </span>
+                            <a href="{{ route('anadirMascota.index') }}" class="btn btn-success btn-sm">
+                                Publicar mi primera mascota
+                            </a>
                         </div>
                     </div>
 
