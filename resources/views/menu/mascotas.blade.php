@@ -263,7 +263,7 @@
                                     <div class="row g-4">
 
                                         <!-- IMAGEN -->
-                                        <div class="col-12 col-md-5">
+                                        <div class="col-12 col-lg-4">
 
                                             @if ($mascota->imagen)
                                                 <img
@@ -273,7 +273,7 @@
                                                     style="max-height: 350px; object-fit: cover;">
                                             @else
                                                 <div class="bg-light rounded-3 d-flex align-items-center justify-content-center"
-                                                     style="height: 250px;">
+                                                    style="height: 250px;">
                                                     <div class="text-center text-secondary">
                                                         <i class="bi bi-image fs-1"></i>
                                                         <p class="mb-0">Sin fotografía</p>
@@ -282,16 +282,15 @@
                                             @endif
 
                                             <div class="mt-3">
-                                                <span class="badge fs-6"
-                                                      style="background-color: #20583F;">
+                                                <span class="badge fs-6" style="background-color: #20583F;">
                                                     <i class="bi bi-paw-fill"></i>
                                                     {{ $mascota->especie }}
                                                 </span>
                                             </div>
                                         </div>
 
-                                        <!-- DATOS -->
-                                        <div class="col-12 col-md-7">
+                                        <!-- DATOS DE LA MASCOTA -->
+                                        <div class="col-12 col-lg-4">
 
                                             <h3 class="fw-bold mb-1">
                                                 {{ $mascota->nombre }}
@@ -303,9 +302,7 @@
                                                 @endif
                                             </h3>
 
-                                            <p class="text-secondary mb-3">
-                                                Información de la mascota
-                                            </p>
+                                            <p class="text-secondary mb-3">Información de la mascota</p>
 
                                             <hr>
 
@@ -333,15 +330,6 @@
                                                 <p style="white-space: pre-line;">{{ $mascota->descripcion ?: 'Sin descripción disponible.' }}</p>
                                             </div>
 
-                                            <div class="mb-3">
-                                                <h6 class="fw-bold">
-                                                    {{-- Icono --}}
-                                                    Ubicacion
-                                                </h6>
-                                                <p style="white-space: pre-line;">{{ $mascota->usuario->city ?: 'Sin ubicacion disponible' }}</p>
-
-                                            </div>
-
                                             @if (isset($mascota->estado) && $mascota->estado)
                                                 <div class="mb-3">
                                                     <h6 class="fw-bold">
@@ -352,17 +340,117 @@
                                                 </div>
                                             @endif
 
-                                            @if (isset($mascota->ubicacion) && $mascota->ubicacion)
+                                        </div>
+
+                                        <!-- CONTACTO Y UBICACIÓN (DERECHA) -->
+                                        <div class="col-12 col-lg-4">
+
+                                            @php
+                                                $usuario  = $mascota->usuario;
+                                                $telefono = $usuario->phone ?? null;
+                                                $correo   = $usuario->email ?? null;
+                                                $ciudad   = $usuario->city ?? null;
+
+                                                $telLimpio = $telefono ? preg_replace('/\D/', '', $telefono) : null;
+                                                if ($telLimpio && strlen($telLimpio) === 10) {
+                                                    $telLimpio = '57' . $telLimpio;
+                                                }
+
+                                                $mensajeWsp = urlencode("Hola, me interesa la mascota {$mascota->nombre} que vi publicada.");
+                                                $lugar = trim(($mascota->ubicacion ?? '') . ' ' . ($ciudad ?? ''));
+                                            @endphp
+
+                                            <div class="border rounded-3 p-3 bg-light h-100">
+
+                                                <!-- CONTACTO -->
                                                 <div class="mb-3">
+                                                    <h6 class="fw-bold">
+                                                        <i class="bi bi-person-lines-fill text-success"></i>
+                                                        Contacto
+                                                    </h6>
+
+                                                    @if ($usuario)
+                                                        <p class="mb-1">
+                                                            <i class="bi bi-person text-secondary"></i>
+                                                            {{ $usuario->name ?? 'Responsable' }}
+                                                        </p>
+                                                    @endif
+
+                                                    <p class="mb-1">
+                                                        <i class="bi bi-telephone text-secondary"></i>
+                                                        @if ($telefono)
+                                                            <a href="tel:{{ $telLimpio }}" class="text-decoration-none">{{ $telefono }}</a>
+                                                        @else
+                                                            <span class="text-muted">Celular no disponible</span>
+                                                        @endif
+                                                    </p>
+
+                                                    <p class="mb-2">
+                                                        <i class="bi bi-envelope text-secondary"></i>
+                                                        @if ($correo)
+                                                            <a href="mailto:{{ $correo }}" class="text-decoration-none">{{ $correo }}</a>
+                                                        @else
+                                                            <span class="text-muted">Correo no disponible</span>
+                                                        @endif
+                                                    </p>
+
+                                                    <div class="d-flex flex-wrap gap-2">
+                                                        @if ($telLimpio)
+                                                            <a href="https://wa.me/{{ $telLimpio }}?text={{ $mensajeWsp }}"
+                                                            target="_blank" rel="noopener"
+                                                            class="btn btn-success btn-sm">
+                                                                <i class="bi bi-whatsapp"></i> WhatsApp
+                                                            </a>
+                                                            <a href="tel:{{ $telLimpio }}" class="btn btn-outline-success btn-sm">
+                                                                <i class="bi bi-telephone-fill"></i> Llamar
+                                                            </a>
+                                                        @endif
+
+                                                        @if ($correo)
+                                                            <a href="mailto:{{ $correo }}?subject={{ rawurlencode('Interés en ' . $mascota->nombre) }}"
+                                                            class=" btn-outline-secondary btn-sm">
+                                                            
+                                                            </a>
+                                                        @endif
+                                                    </div>
+                                                </div>
+
+                                                <hr>
+
+                                                <!-- UBICACIÓN -->
+                                                <div>
                                                     <h6 class="fw-bold">
                                                         <i class="bi bi-geo-alt text-success"></i>
                                                         Ubicación
                                                     </h6>
-                                                    <p>{{ $mascota->ubicacion }}</p>
-                                                </div>
-                                            @endif
 
+                                                    @if ($lugar)
+                                                        <p class="mb-2">{{ $mascota->ubicacion ?: $ciudad }}</p>
+
+                                                        <div class="ratio ratio-4x3 rounded-3 overflow-hidden shadow-sm">
+                                                            <iframe
+                                                                src="https://maps.google.com/maps?q={{ urlencode($lugar . ', Colombia') }}&output=embed"
+                                                                style="border:0;"
+                                                                allowfullscreen
+                                                                loading="lazy"
+                                                                referrerpolicy="no-referrer-when-downgrade"
+                                                                title="Mapa de ubicación de {{ $mascota->nombre }}">
+                                                            </iframe>
+                                                        </div>
+
+                                                        <a href="https://www.google.com/maps/search/?api=1&query={{ urlencode($lugar . ', Colombia') }}"
+                                                        target="_blank" rel="noopener"
+                                                        class="btn btn-link btn-sm px-0 mt-1">
+                                                            <i class="bi bi-box-arrow-up-right"></i> Abrir en Google Maps
+                                                        </a>
+                                                    @else
+                                                        <p class="text-muted mb-0">Sin ubicación disponible</p>
+                                                    @endif
+                                                </div>
+
+                                            </div>
                                         </div>
+
                                     </div>
                                 </div>
 

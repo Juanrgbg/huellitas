@@ -4,6 +4,11 @@
 
 @section('content')
 
+<head>
+  <!-- en una vista concreta -->
+@push('estilos')
+  <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+@endpush
 
   <nav class="navbar navbar-expand-lg bg-body-tertiary ">
     <div class="container-fluid mx-5" style="">
@@ -25,47 +30,47 @@
       </ul>
       
       <div class="d-flex align-items-center justify-content-center gap-2 mt-2 mt-lg-0">
-  <button class="btn btn-link"><i class="bi bi-search text-success fs-5"></i></button>
-
-  @guest
-    <a href="{{ route('login') }}" class="btn btn-link" aria-label="Iniciar sesión">
-      <i class="bi bi-person text-success fs-4"></i>
-    </a>
-    <a href="{{ route('login') }}" class="btn fw-bold text-white" style="background:#2C9678">
-      Iniciar Sesión
-    </a>
-  @endguest
-
-  @auth
-    
-    @php $usuario = auth()->user(); @endphp 
-
-    <a href="{{ route('profile.index') }}" class="d-flex align-items-center gap-2 text-decoration-none me-2">
-      @if ($usuario->avatar)
-        <img src="{{ $usuario->avatar }}"
-        alt="Foto de {{ $usuario->name }}"
-        width="40" height="40"
-        class="rounded-circle object-fit-cover border border-2 border-success"
-        referrerpolicy="no-referrer">
-
-      @else
-      <span class="rounded-circle d-inline-flex align-items-center justify-content-center text-white fw-bold"
-      style="width:40px; height:40px; background:#2C9678;">
-      {{ $usuario->initials() }}
-    </span>
-    @endif
-
-    <span class="text-success fw-semibold">Hola, {{ $usuario->name }}</span>
-    </a>
-
-    <form method="POST" action="{{ route('logout') }}" class="d-inline">
-      @csrf
-      <button type="submit" class="btn btn-outline-success btn-sm">Cerrar sesión</button>
-    </form>
-  @endauth
-</div>
+        <button class="btn btn-link"><i class="bi bi-search text-success fs-5"></i></button>
+        
+        @guest
+        <a href="{{ route('login') }}" class="btn btn-link" aria-label="Iniciar sesión">
+          <i class="bi bi-person text-success fs-4"></i>
+        </a>
+        <a href="{{ route('login') }}" class="btn fw-bold text-white" style="background:#2C9678">
+          Iniciar Sesión
+        </a>
+        @endguest
+        
+        @auth
+        
+        @php $usuario = auth()->user(); @endphp 
+        
+        <a href="{{ route('profile.index') }}" class="d-flex align-items-center gap-2 text-decoration-none me-2">
+          @if ($usuario->avatar)
+          <img src="{{ $usuario->avatar }}"
+          alt="Foto de {{ $usuario->name }}"
+          width="40" height="40"
+          class="rounded-circle object-fit-cover border border-2 border-success"
+          referrerpolicy="no-referrer">
+          
+          @else
+          <span class="rounded-circle d-inline-flex align-items-center justify-content-center text-white fw-bold"
+          style="width:40px; height:40px; background:#2C9678;">
+          {{ $usuario->initials() }}
+        </span>
+        @endif
+        
+        <span class="text-success fw-semibold">Hola, {{ $usuario->name }}</span>
+      </a>
+      
+      <form method="POST" action="{{ route('logout') }}" class="d-inline">
+        @csrf
+        <button type="submit" class="btn btn-outline-success btn-sm">Cerrar sesión</button>
+      </form>
+      @endauth
     </div>
   </div>
+</div>
 </nav>
 
 {{-- Hero --}}
@@ -82,14 +87,12 @@ style="background: url('{{ asset('images/head_home.png') }}') center/cover no-re
       <p class="fs-5 mb-4 text-white opacity-90">
         Adopta, no compres. Dale una segunda oportunidad a un amigo que te lo agradecerá para siempre.
       </p>
-      <button type="button"
-      class="btn btn-lg px-4 py-2 rounded-pill fw-medium text-white shadow-sm d-inline-flex align-items-center gap-2"
-      style="background-color: #2C9678; border: none;">
-      <i class="bi bi-paw-fill fs-5"></i>
-      <span>Ver mascotas</span>
-    </button>
+      <button type="button" class=" mascotas btn-lift shadow-sm btn btn-lg px-4 py-2 rounded-pill fw-medium text-white shadow-sm d-inline-flex align-items-center gap-2  " style="background-color: #2C9678; border: none;">
+        <i class="bi bi-paw-fill fs-5"></i>
+        <span>Ver mascotas</span>
+      </button>
+    </div>
   </div>
-</div>
 </div>
 </header>
 
@@ -193,11 +196,12 @@ style="background: url('{{ asset('images/head_home.png') }}') center/cover no-re
           <p class="mb-0 small" style="color:#2C9678">Ayuda a difundir.</p>
         </div>
       </a>
-
+      
     </div>
   </div>
 </section>
 
+</head>
 
 
 
