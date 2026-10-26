@@ -33,6 +33,37 @@
           }
         }
 
+    /* RESALTA LOS BOTONES DE LA PAGINA AL PASAR EL CURSOR POR ENCIMA */
+    .btnes {
+        display: inline-block;
+        transition: transform 0.3s ease;
+    }
+
+    .btnes:hover {
+        transform: translateY(-5px);
+    }
+
+    /* DA NUEVAS ANIMACIOENS AL BOTON DE DETALLES */
+    .details {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    }
+
+    .details:hover {
+    transform: scale(1.15);
+    }
+
+    .details {
+        display: inline-block;
+        transition: transform 0.3s ease;
+    }
+
+    .details:hover {
+        transform: rotate(-3deg);
+    }
+
+
+
 </style>
 
 <div class="container-fluid">
@@ -127,7 +158,7 @@
             <div class="row align-items-center mb-4">
                 <div class="col-12 col-lg-7">
                     <h1 class="fw-bold text-dark">
-                        Buscar Mascotas
+                        Encuentra a tu compañero
                     </h1>
                     <p class="ms-2 mb-3">
                         Encuentra a tu nuevo mejor amigo.
@@ -143,7 +174,7 @@
                                    placeholder="Buscar por nombre, raza..."
                                    value="{{ request('buscar') }}">
 
-                            <button class="btn btn-light border" type="submit">
+                            <button class="btnes btn btn-light border" type="submit">
                                 <i class="bi bi-search"></i>
                             </button>
                         </div>
@@ -154,12 +185,12 @@
             <!-- FILTROS -->
             <div class="d-flex flex-wrap gap-2 mb-4">
                 <a href="{{ route('mascotas.index') }}"
-                   class="btn btn-success">
+                   class="btnes btn btn-success">
                     Todos
                 </a>
 
                 @foreach (\App\Models\MenuMascotas::ESPECIES as $valor => $etiqueta)
-                    <a href="{{ route('mascotas.index', ['especie' => $valor]) }}" class="btn btn-success">
+                    <a href="{{ route('mascotas.index', ['especie' => $valor]) }}" class="btnes btn btn-success">
                         {{ $etiqueta }}
                     </a>
                 @endforeach         
@@ -171,7 +202,7 @@
 
                 @forelse ($mascotas as $mascota)
 
-                    <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                    <div class="btnes col-12 col-sm-6 col-lg-4 col-xl-3">
 
                         <div class="card h-100 shadow-sm border-0">
 
@@ -218,7 +249,7 @@
 
                                 <!-- BOTÓN QUE ABRE LA MODAL -->
                                 <button type="button"
-                                        class="btn btn-success mt-auto"
+                                        class=" btn btn-success mt-auto"
                                         style="background-color: #20583F;"
                                         data-bs-toggle="modal"
                                         data-bs-target="#modalMascota{{ $mascota->id }}">
