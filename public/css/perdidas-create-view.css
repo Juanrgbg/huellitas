@@ -1,0 +1,9 @@
+/* =============================================
+   Estilos de la vista Agregar mascota perdida (perdidas/create.blade.php)
+   ============================================= */
+
+.create-consejo {
+    background-color: #fff6df;
+    border-left: 5px solid #f6b73c;
+    color: #5c4300;
+}

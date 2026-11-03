@@ -55,6 +55,11 @@ class User extends Authenticatable
             : $initials;
     }
 
+    public function mascotasPerdidas(): HasMany
+    {
+        return $this->hasMany(MascotaPerdida::class, 'user_id');
+    }
+
     public function mascotas(): HasMany
     {
         return $this->hasMany(MenuMascotas::class, 'user_id');

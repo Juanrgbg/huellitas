@@ -6,7 +6,15 @@ import { defineConfig, lazyPlugins } from 'vite-plus';
 export default defineConfig({
     plugins: lazyPlugins(() => [
         laravel({
-            input: ['resources/css/app.css', 'resources/js/app.js'],
+            input: [
+                'resources/css/app.css',
+                'resources/css/home.css',
+                'resources/css/mascotas.css',
+                'resources/css/anadirMascota.css',
+                'resources/css/editpets.css',
+                'resources/css/profile.css',
+                'resources/js/app.js',
+            ],
             refresh: true,
             fonts: [
                 bunny('Instrument Sans', {

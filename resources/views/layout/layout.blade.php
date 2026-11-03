@@ -1,27 +1,20 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     <link rel="stylesheet" href="path/to/icon-wizard.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/layout-view.css') }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    {{-- El @yield('title tiene como funcion heredar el titulo delas otras views') --}}
-    @stack('home')
+    {{-- El0 @yield('title tiene como funcion heredar el titulo delas otras views') --}}
+    @stack('styles')
     <title>@yield('title')</title>
 </head>
-<style>
-    /* Se */
-    body {
-        font-family: "Baloo 2", sans-serif;
-        
-    }
-
-</style>
 <body style="background:#F5F1E8">
 
 @yield('content')

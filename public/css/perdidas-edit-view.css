@@ -1,0 +1,13 @@
+/* =============================================
+   Estilos de la vista Editar mascota perdida (perdidas/edit.blade.php)
+   ============================================= */
+
+.edit-volver {
+    color: #2C9678;
+    font-weight: 600;
+}
+
+.edit-volver:hover {
+    color: #1F5639;
+    text-decoration: underline !important;
+}

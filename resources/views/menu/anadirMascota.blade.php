@@ -2,6 +2,10 @@
 
 @section('title','Create pets')
 
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('css/anadirMascota-view.css') }}">
+@endpush
+
 @section('content')
 
 <div class="container-fluid p-0">

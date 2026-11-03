@@ -49,9 +49,9 @@ class MenuMascotasController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(MenuMascotas $menuMascotas)
+    public function show()
     {
-        //
+        return view('menu.nosotras');
     }
 
     /**

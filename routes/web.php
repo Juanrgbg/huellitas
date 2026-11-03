@@ -4,6 +4,7 @@ use App\Http\Controllers\CreateCountController;
 use App\Http\Controllers\CreatepetsController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MascotasPerdidasController;
 use App\Http\Controllers\MenuMascotasController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -12,6 +13,15 @@ Route::get('/', function () {
     //return view('welcome');
     return view('home.home');
 })->name('home');
+
+Route::get('/quienes-somos', function () {
+    return view('menu.quienesSomos');
+})->name('quienesSomos');
+
+Route::view('/manual', 'home.manual')->name('manual');
+
+// Mascotas perdidas: el listado es publico para que cualquiera pueda ayudar
+Route::get('/mascotas-perdidas', [MascotasPerdidasController::class, 'index'])->name('perdidas.index');
 
 //Solo visitantes sin sesion
 Route::middleware('guest')->group(function () {
@@ -36,4 +46,12 @@ Route::middleware('auth')->group(function () {
     Route::get('editpets', [MenuMascotasController::class, 'misMascotas'])->name('editpets.index');
     Route::put('mascotas/{id}', [MenuMascotasController::class, 'update'])->name('mascotas.update');
     Route::delete('mascotas/{id}', [MenuMascotasController::class, 'destroy'])->name('mascotas.destroy');
+
+    // Mascotas perdidas: agregar, editar y eliminar publicaciones propias
+    Route::get('/mascotas-perdidas/publicar', [MascotasPerdidasController::class, 'create'])->name('perdidas.create');
+    Route::post('/mascotas-perdidas', [MascotasPerdidasController::class, 'store'])->name('perdidas.store');
+    Route::get('/mascotas-perdidas/mis-publicaciones', [MascotasPerdidasController::class, 'mis'])->name('perdidas.mis');
+    Route::get('/mascotas-perdidas/{id}/editar', [MascotasPerdidasController::class, 'edit'])->whereNumber('id')->name('perdidas.edit');
+    Route::put('/mascotas-perdidas/{id}', [MascotasPerdidasController::class, 'update'])->whereNumber('id')->name('perdidas.update');
+    Route::delete('/mascotas-perdidas/{id}', [MascotasPerdidasController::class, 'destroy'])->whereNumber('id')->name('perdidas.destroy');
 });

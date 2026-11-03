@@ -1,0 +1,88 @@
+/* =============================================
+   CSS específico para la vista Mascotas (mascotas.blade.php)
+   ============================================= */
+
+/* Imagen de tarjeta de mascota */
+.card-img-top {
+    transition: transform 0.4s ease;
+}
+
+.card:hover .card-img-top {
+    transform: scale(1.04);
+}
+
+.card {
+    overflow: hidden;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14) !important;
+    transform: translateY(-4px);
+}
+
+/* Botón de detalles */
+.btn-detalles {
+    transition: background-color 0.25s ease, transform 0.25s ease;
+}
+
+.btn-detalles:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+/* ---- Estilos que antes estaban dentro de la vista ---- */
+
+/* Se */
+body {
+    font-family: "Baloo 2", sans-serif;
+
+}
+
+
+    .atras {
+      position: fixed;          
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      height: 100dvh;           /* en celular respeta la barra del navegador */
+      object-fit: cover;        
+      object-position: center top; 
+      z-index: -1;
+    }
+
+    @media (max-width: 768px) {
+      .atras {
+        object-position: 70% center; 
+      }
+    }
+
+/* RESALTA LOS BOTONES DE LA PAGINA AL PASAR EL CURSOR POR ENCIMA */
+.btnes {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.btnes:hover {
+    transform: translateY(-5px);
+}
+
+/* DA NUEVAS ANIMACIOENS AL BOTON DE DETALLES */
+.details {
+display: inline-block;
+transition: transform 0.3s ease;
+}
+
+.details:hover {
+transform: scale(1.15);
+}
+
+.details {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.details:hover {
+    transform: rotate(-3deg);
+}

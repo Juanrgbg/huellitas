@@ -3,68 +3,14 @@
 
 @section('title', 'main')
 
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('css/mascotas-view.css') }}">
+@endpush
+
 @section('content')
 
 
 <img src="{{ asset('images/fondo') }}" alt="fondito" class="atras">
-<style>
-    /* Se */
-    body {
-        font-family: "Baloo 2", sans-serif;
-        
-    }
-    
-
-        .atras {
-          position: fixed;          
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100vh;
-          height: 100dvh;           /* en celular respeta la barra del navegador */
-          object-fit: cover;        
-          object-position: center top; 
-          z-index: -1;
-        }
-
-        @media (max-width: 768px) {
-          .atras {
-            object-position: 70% center; 
-          }
-        }
-
-    /* RESALTA LOS BOTONES DE LA PAGINA AL PASAR EL CURSOR POR ENCIMA */
-    .btnes {
-        display: inline-block;
-        transition: transform 0.3s ease;
-    }
-
-    .btnes:hover {
-        transform: translateY(-5px);
-    }
-
-    /* DA NUEVAS ANIMACIOENS AL BOTON DE DETALLES */
-    .details {
-    display: inline-block;
-    transition: transform 0.3s ease;
-    }
-
-    .details:hover {
-    transform: scale(1.15);
-    }
-
-    .details {
-        display: inline-block;
-        transition: transform 0.3s ease;
-    }
-
-    .details:hover {
-        transform: rotate(-3deg);
-    }
-
-
-
-</style>
 
 <div class="container-fluid">
     <div class="row min-vh-100">
@@ -211,7 +157,8 @@
                                     src="{{ asset('storage/' . $mascota->imagen) }}"
                                     class="card-img-top"
                                     alt="Foto de {{ $mascota->nombre }}"
-                                    style="height: 230px; object-fit: cover;">
+                                    style="height: 230px; object-fit: cover;"
+                                    onerror="this.onerror=null;this.src='{{ asset('storage/' . ltrim($mascota->imagen, 'public/')) }}';">
                             @else
                                 <div class="bg-secondary-subtle d-flex align-items-center justify-content-center"
                                      style="height: 230px;">
@@ -301,7 +248,8 @@
                                                     src="{{ asset('storage/' . $mascota->imagen) }}"
                                                     alt="Foto de {{ $mascota->nombre }}"
                                                     class="img-fluid rounded-3 w-100 shadow-sm"
-                                                    style="max-height: 350px; object-fit: cover;">
+                                                    style="max-height: 350px; object-fit: cover;"
+                                                    onerror="this.onerror=null;this.src='{{ asset('storage/' . ltrim($mascota->imagen, 'public/')) }}';">
                                             @else
                                                 <div class="bg-light rounded-3 d-flex align-items-center justify-content-center"
                                                     style="height: 250px;">
@@ -359,6 +307,15 @@
                                                     Descripción
                                                 </h6>
                                                 <p style="white-space: pre-line;">{{ $mascota->descripcion ?: 'Sin descripción disponible.' }}</p>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <h6 class="fw-bold">
+                                                    {{-- ICONO --}}
+                                                    Raza
+                                                </h6>
+                                                <p></p>
+
                                             </div>
 
                                             @if (isset($mascota->estado) && $mascota->estado)

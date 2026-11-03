@@ -1,0 +1,50 @@
+/* Custom smooth animations for buttons and navigation */
+
+/* General button animations */
+.btn {
+    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Specific class used in views for custom buttons */
+.btnes {
+    transition: transform 0.3s ease, background-color 0.2s ease;
+    display: inline-block;
+}
+.btnes:hover {
+    transform: translateY(-4px) scale(1.02);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Nav lateral (sidebar) — animación suave con cubic-bezier */
+aside .nav-link {
+    transition: color 0.25s ease,
+                background-color 0.25s ease,
+                transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.25s ease,
+                letter-spacing 0.25s ease;
+    border-radius: 0.4rem;
+    will-change: transform;
+}
+aside .nav-link:hover {
+    background-color: transparent;
+    color: #fff;
+    transform: translateX(7px) scale(1.03);
+    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.18);
+    letter-spacing: 0.02em;
+}
+aside .nav-link:active {
+    transform: translateX(3px) scale(0.98);
+    transition-duration: 0.1s;
+}
+
+/* Footer and other links */
+footer a {
+    transition: color 0.2s ease;
+}
+footer a:hover {
+    color: #ffd700; /* gold on hover */
+}

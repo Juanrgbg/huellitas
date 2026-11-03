@@ -1,0 +1,65 @@
+/* =============================================
+   Estilos de la vista Mascotas perdidas (perdidas/index.blade.php)
+   ============================================= */
+
+/* Tarjetas */
+.perdida-card {
+    overflow: hidden;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.perdida-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14) !important;
+    transform: translateY(-4px);
+}
+
+.perdida-img,
+.perdida-sin-foto {
+    height: 230px;
+}
+
+.perdida-img {
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.perdida-card:hover .perdida-img {
+    transform: scale(1.04);
+}
+
+.perdida-sin-foto {
+    background-color: #e9ecef;
+}
+
+.perdida-btn-detalles {
+    background-color: #20583F;
+    border-color: #20583F;
+}
+
+/* Filtros: el activo se rellena de verde oscuro */
+.perdidas-filtro.is-active {
+    background-color: #1F5639;
+    border-color: #1F5639;
+    color: #fff;
+}
+
+/* Modal */
+.perdida-modal-header {
+    background-color: #20583F;
+}
+
+.perdida-modal-img {
+    max-height: 350px;
+    object-fit: cover;
+}
+
+.perdida-contacto {
+    background-color: #e3f1ec;
+    border-left: 5px solid #2C9678;
+}
+
+/* Sin resultados */
+.perdidas-vacio {
+    background-color: #fff;
+    color: #1F5639;
+}

@@ -3,6 +3,10 @@
 
 @section('title', 'Editar publicaciones')
 
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('css/editpets-view.css') }}">
+@endpush
+
 @section('content')
 
 <div class="container-fluid">
@@ -372,8 +376,10 @@
                                         </div>
                                         </div>
                                         
-                                        {{-- CAMPO DE RAZA (NO ESTABA) --}}
-                                        <div class="row">
+                                        {{-- CAMPO DE RAZA (NO ESTABA) Y FOTO --}}
+                                    <div class="row">
+
+                                        <div class="col-md-6 mb-3">
                                             <div class="col-md-6 mb-3">
                                                 <label for="raza{{ $mascota->id }}" class="form-label fw-semibold">Raza</label>
                                                 <input type="text" id="raza{{ $mascota->id }}" name="raza"
@@ -382,7 +388,7 @@
                                         </div>
 
                                         <!-- FOTO ACTUAL -->
-                                        <div class="mb-3">
+                                        <div class="col-md-6 mb-3 mb-3">
                                             <label class="form-label fw-semibold">
                                                 Fotografía actual
                                             </label>
@@ -415,7 +421,8 @@
                                         </div>
 
                                     </div>
-
+                                </div>
+                                    
                                     <!-- BOTONES -->
                                     <div class="modal-footer">
 

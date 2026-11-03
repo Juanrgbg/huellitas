@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/profileEdit-view.css') }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -13,33 +14,6 @@
     <title>@yield('title')</title>
 </head>
 <img src="{{ asset('images/login/fondo_create-count.png') }}" alt="fondito" class="atras">
-<style>
-    /* Se */
-    body {
-        font-family: "Baloo 2", sans-serif;
-        
-    }
-    
-
-        .atras {
-          position: fixed;          
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100vh;
-          height: 100dvh;           /* en celular respeta la barra del navegador */
-          object-fit: cover;        
-          object-position: center top; 
-          z-index: -1;
-        }
-
-        @media (max-width: 768px) {
-          .atras {
-            object-position: 70% center; 
-          }
-        }
-
-</style>
 <body style="background:#F5F1E8">
 
 

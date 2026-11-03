@@ -1,0 +1,420 @@
+/* =============================================
+   Estilos de la vista menu/quienesSomos
+   ============================================= */
+
+    /* ==========================================================================
+   HUELLITAS A CASA - QUIENES SOMOS VIEW CSS & ANIMATIONS
+   Estilos y animaciones dedicadas, suaves y fluidas para Quiénes Somos
+   ========================================================================== */
+
+/* Imagen de fondo fija */
+
+
+/* ==========================================================================
+   ANIMACIONES DE LA BARRA LATERAL (ASIDE)
+   ========================================================================== */
+
+.texto {
+    position: relative;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.texto:hover {
+    transform: translateY(-5px);
+}
+
+.texto::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    left: 0;
+    bottom: -5px;
+    background: #011108;
+    transition: width 0.3s ease;
+}
+
+.texto:hover::after {
+    width: 100%;
+}
+
+/* Botón "Ver mascotas" */
+.btn-mascota {
+    display: inline-block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-mascota:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+/* Tarjetas de animales en home */
+.tarjeta-animal {
+    display: inline-block;
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.tarjeta-animal:hover {
+    transform: translateY(-6px) scale(1.03);
+}
+
+/* ---- Estilos que antes estaban dentro de la vista ---- */
+
+/* SE RESALTA EL TEXTO CUANDO PASAS EL CURSOR POR ENCIMA */
+.texto {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.texto:hover {
+    transform: translateY(-5px);
+}
+
+/* AGREGA UNA LINEA EN LA PARTE BAJA DE EL TEXTO AL PASAR EL CURSOR POR ENCIMA */
+
+.texto {
+    position: relative;
+    display: inline-block;
+}
+
+.texto::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    left: 0;
+    bottom: -5px;
+    background: #011108;
+    transition: width 0.3s ease;
+}
+
+.texto:hover::after {
+    width: 100%;
+}
+
+
+/* RESALTAR BOTON DE VER MASCOTAS AL PASAR CURSOR */
+.btn-mascota {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.btn-mascota:hover {
+    transform: translateY(-5px);
+}
+
+/* RESALTAR TARJETAS DE ANIMALES */
+
+.tarjeta-animal {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.tarjeta-animal:hover {
+    transform: translateY(-5px);
+}
+
+
+
+
+aside {
+    animation: huellitasFadeIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.08);
+}
+
+aside h2 i {
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+aside h2:hover i {
+    animation: huellitasWiggle 0.6s ease infinite;
+}
+
+aside .nav-link {
+    transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.28s ease, box-shadow 0.28s ease !important;
+    will-change: transform;
+}
+
+aside .nav-link:hover {
+    transform: translateX(4px);
+    background-color: #2C9678 !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+aside .nav-link i {
+    display: inline-block;
+    transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+aside .nav-link:hover i {
+    transform: scale(1.15);
+}
+
+/* ==========================================================================
+   ANIMACIONES DE ENCABEZADO Y HERO BANNER
+   ========================================================================== */
+
+main {
+    animation: huellitasFadeIn 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.quienes-hero-card {
+    background: linear-gradient(135deg, #1F5639 0%, #20583F 60%, #2C9678 100%);
+    border-radius: 20px;
+    box-shadow: 0 12px 32px rgba(31, 86, 57, 0.22);
+    animation: huellitasFadeInDown 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.quienes-hero-card:hover {
+    box-shadow: 0 16px 40px rgba(31, 86, 57, 0.28);
+}
+
+.quienes-hero-card::before {
+    content: "";
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: huellitasPulseGlow 4s infinite ease-in-out;
+}
+
+.badge-sena {
+    background-color: #39A900;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 12px rgba(57, 169, 0, 0.35);
+    animation: huellitasFloat 4s ease-in-out infinite;
+    will-change: transform;
+}
+
+/* ==========================================================================
+   ANIMACIONES DE LA TARJETA DE HISTORIA (RIOSUCIO, CALDAS)
+   ========================================================================== */
+
+.historia-card {
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(44, 150, 120, 0.18) !important;
+    transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+    animation: huellitasFadeInUp 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 0.1s;
+    will-change: transform, box-shadow;
+}
+
+.historia-card:hover {
+    box-shadow: 0 16px 36px rgba(31, 86, 57, 0.12) !important;
+    transform: translateY(-3px);
+}
+
+.icon-box-riosucio {
+    width: 65px;
+    height: 65px;
+    background: #E8F5EE;
+    color: #1F5639;
+    border-radius: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.3s ease, color 0.3s ease;
+    will-change: transform;
+}
+
+.historia-card:hover .icon-box-riosucio {
+    transform: scale(1.08) rotate(4deg);
+    background-color: #2C9678;
+    color: #fff;
+}
+
+/* ==========================================================================
+   ANIMACIONES DE LAS TARJETAS DEL EQUIPO (3 CHICOS DEL SENA)
+   ========================================================================== */
+
+@keyframes teamCardEntrance {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.97);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.team-card {
+    border-radius: 18px;
+    background: #fff;
+    border: 1px solid rgba(44, 150, 120, 0.15) !important;
+    transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.38s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.38s ease;
+    animation: teamCardEntrance 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+    position: relative;
+    overflow: hidden;
+    will-change: transform, box-shadow;
+}
+
+.team-col:nth-child(1) .team-card { animation-delay: 0.15s; }
+.team-col:nth-child(2) .team-card { animation-delay: 0.25s; }
+.team-col:nth-child(3) .team-card { animation-delay: 0.35s; }
+
+.team-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgba(31, 86, 57, 0.14) !important;
+    border-color: #2C9678 !important;
+}
+
+.team-avatar-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.team-avatar {
+    width: 95px;
+    height: 95px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #E8F5EE 0%, #D4EBD9 100%);
+    border: 3px solid #2C9678;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: #1F5639;
+    margin: 0 auto;
+    transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.38s ease;
+    will-change: transform;
+}
+
+.team-card:hover .team-avatar {
+    transform: scale(1.06) translateY(-2px);
+    box-shadow: 0 8px 22px rgba(44, 150, 120, 0.28);
+}
+
+.team-badge-sena {
+    position: absolute;
+    bottom: -4px;
+    right: 50%;
+    transform: translateX(50%);
+    font-size: 0.72rem;
+    background: #39A900;
+    color: #fff;
+    padding: 2px 10px;
+    border-radius: 12px;
+    white-space: nowrap;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    transition: transform 0.25s ease;
+}
+
+.team-quote {
+    background: #F8FAF9;
+    border-left: 3px solid #2C9678;
+    border-radius: 0 10px 10px 0;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.88rem;
+    color: #335544;
+    font-style: italic;
+    transition: background-color 0.25s ease;
+}
+
+.team-card:hover .team-quote {
+    background: #EEF7F3;
+}
+
+/* ==========================================================================
+   ANIMACIONES DE LOS PILARES / VALORES
+   ========================================================================== */
+
+.pilar-card {
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(44, 150, 120, 0.12) !important;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    height: 100%;
+    will-change: transform;
+}
+
+.pilar-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(31, 86, 57, 0.1) !important;
+}
+
+.pilar-icon {
+    font-size: 2rem;
+    color: #2C9678;
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+}
+
+.pilar-card:hover .pilar-icon {
+    transform: scale(1.14) rotate(-4deg);
+}
+
+/* ==========================================================================
+   ANIMACIONES DEL BANNER FINAL (CTA)
+   ========================================================================== */
+
+.cta-quienes {
+    background: linear-gradient(135deg, #E3F1EC 0%, #D5ECE4 100%);
+    border: 1px solid rgba(44, 150, 120, 0.25);
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(31, 86, 57, 0.08);
+}
+
+.btn-cta-adopta {
+    background-color: #2C9678;
+    color: #fff;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.28s ease, box-shadow 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+}
+
+.btn-cta-adopta:hover {
+    background-color: #1F5639;
+    color: #fff;
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 22px rgba(44, 150, 120, 0.35);
+}
+
+.btn-cta-adopta:active {
+    transform: translateY(0) scale(0.99);
+}
+
+.btn-cta-contacto {
+    background-color: #fff;
+    color: #1F5639;
+    border: 2px solid #1F5639;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.28s ease, color 0.28s ease;
+    will-change: transform;
+}
+
+.btn-cta-contacto:hover {
+    background-color: #1F5639;
+    color: #fff;
+    transform: translateY(-2px) scale(1.02);
+}
+
+.btn-cta-contacto:active {
+    transform: translateY(0) scale(0.99);
+}
+
+/* Respeto a preferencias de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

@@ -2,69 +2,14 @@
 
 @section('title','Principal')
 
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('css/home-view.css') }}">
+@endpush
+
 @section('content')
 
 
 
-<style>
-
-/* SE RESALTA EL TEXTO CUANDO PASAS EL CURSOR POR ENCIMA */
-.texto {
-    display: inline-block;
-    transition: transform 0.3s ease;
-}
-
-.texto:hover {
-    transform: translateY(-5px);
-}
-
-/* AGREGA UNA LINEA EN LA PARTE BAJA DE EL TEXTO AL PASAR EL CURSOR POR ENCIMA */
-
-.texto {
-    position: relative;
-    display: inline-block;
-}
-
-.texto::after {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 2px;
-    left: 0;
-    bottom: -5px;
-    background: #011108;
-    transition: width 0.3s ease;
-}
-
-.texto:hover::after {
-    width: 100%;
-}
-
-
-/* RESALTAR BOTON DE VER MASCOTAS AL PASAR CURSOR */
-.btn-mascota {
-    display: inline-block;
-    transition: transform 0.3s ease;
-}
-
-.btn-mascota:hover {
-    transform: translateY(-5px);
-}
-
-/* RESALTAR TARJETAS DE ANIMALES */
-
-.tarjeta-animal {
-    display: inline-block;
-    transition: transform 0.3s ease;
-}
-
-.tarjeta-animal:hover {
-    transform: translateY(-5px);
-}
-
-
-
-</style> 
 
   <nav class="navbar navbar-expand-lg bg-body-tertiary ">
     <div class="container-fluid mx-5" style="">
@@ -81,12 +26,12 @@
       <ul class="navbar-nav mx-auto text-center text-lg-start">
         <li class="nav-item"><a class=" texto nav-link active text-success fs-5" href="#">Inicio</a></li>
         <li class="nav-item"><a class=" texto nav-link text-success fs-5" href="{{ route('mascotas.index') }}">Mascotas</a></li>
-        <li class="nav-item"><a class=" texto nav-link text-success fs-5" href="#">Quiénes Somos</a></li>
-        <li class="nav-item"><a class=" texto nav-link text-success fs-5" href="#">Contacto</a></li>
+        <li class="nav-item"><a class=" texto nav-link text-success fs-5" href="{{ route('perdidas.index') }}">Mascotas perdidas</a></li>
+        <li class="nav-item"><a class=" texto nav-link text-success fs-5" href="{{ route('quienesSomos') }}">Quiénes Somos</a></li>
+        <li class="nav-item"><a class=" texto nav-link text-success fs-5" href="{{ route('manual') }}">Manual</a></li>
       </ul>
       
       <div class="d-flex align-items-center justify-content-center gap-2 mt-2 mt-lg-0">
-        <button class="btn btn-link"><i class="tarjeta-animal bi bi-search text-success fs-5"></i></button>
         
         @guest
         <a href="{{ route('login') }}" class="btn btn-link" aria-label="Iniciar sesión">
@@ -128,6 +73,7 @@
   </div>
 </div>
 </nav>
+
 
 {{-- Hero --}}
 <header class="position-relative text-white py-5 px-3 px-md-5 d-flex align-items-center"

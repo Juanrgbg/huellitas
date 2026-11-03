@@ -1,0 +1,22 @@
+/* =============================================
+   CSS específico para la vista Añadir Mascota (anadirMascota.blade.php)
+   ============================================= */
+
+/* Inputs con foco suave */
+.form-control:focus,
+.form-select:focus {
+    border-color: #20583F;
+    box-shadow: 0 0 0 0.2rem rgba(32, 88, 63, 0.2);
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Botón submit */
+.btn-submit-mascota {
+    transition: background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn-submit-mascota:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 14px rgba(32, 88, 63, 0.3);
+}
+

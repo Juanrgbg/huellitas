@@ -1,0 +1,106 @@
+/* =============================================
+   CSS específico para la vista Home (home.blade.php)
+   ============================================= */
+
+/* Texto con animación de subida y línea inferior */
+.texto {
+    position: relative;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.texto:hover {
+    transform: translateY(-5px);
+}
+
+.texto::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    left: 0;
+    bottom: -5px;
+    background: #011108;
+    transition: width 0.3s ease;
+}
+
+.texto:hover::after {
+    width: 100%;
+}
+
+/* Botón "Ver mascotas" */
+.btn-mascota {
+    display: inline-block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-mascota:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+/* Tarjetas de animales en home */
+.tarjeta-animal {
+    display: inline-block;
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.tarjeta-animal:hover {
+    transform: translateY(-6px) scale(1.03);
+}
+
+/* ---- Estilos que antes estaban dentro de la vista ---- */
+
+/* SE RESALTA EL TEXTO CUANDO PASAS EL CURSOR POR ENCIMA */
+.texto {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.texto:hover {
+    transform: translateY(-5px);
+}
+
+/* AGREGA UNA LINEA EN LA PARTE BAJA DE EL TEXTO AL PASAR EL CURSOR POR ENCIMA */
+
+.texto {
+    position: relative;
+    display: inline-block;
+}
+
+.texto::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    left: 0;
+    bottom: -5px;
+    background: #011108;
+    transition: width 0.3s ease;
+}
+
+.texto:hover::after {
+    width: 100%;
+}
+
+
+/* RESALTAR BOTON DE VER MASCOTAS AL PASAR CURSOR */
+.btn-mascota {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.btn-mascota:hover {
+    transform: translateY(-5px);
+}
+
+/* RESALTAR TARJETAS DE ANIMALES */
+
+.tarjeta-animal {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.tarjeta-animal:hover {
+    transform: translateY(-5px);
+}

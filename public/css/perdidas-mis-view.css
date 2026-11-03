@@ -1,0 +1,40 @@
+/* =============================================
+   Estilos de la vista Editar publicaciones perdidas (perdidas/mis.blade.php)
+   ============================================= */
+
+.mis-card {
+    overflow: hidden;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.mis-card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12) !important;
+    transform: translateY(-3px);
+}
+
+.mis-img,
+.mis-sin-foto {
+    height: 200px;
+}
+
+.mis-img {
+    object-fit: cover;
+}
+
+.mis-sin-foto {
+    background-color: #e9ecef;
+}
+
+.mis-btn {
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.mis-btn:hover {
+    transform: scale(1.06);
+    filter: brightness(1.08);
+}
+
+.mis-vacio {
+    background-color: #fff;
+    color: #1F5639;
+}

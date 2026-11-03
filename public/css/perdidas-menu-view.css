@@ -1,0 +1,27 @@
+/* =============================================
+   Estilos del menú lateral de Mascotas perdidas (perdidas/_menu.blade.php)
+   ============================================= */
+
+.perdidas-menu {
+    background-color: #20583F;
+}
+
+.perdidas-link {
+    background-color: #196741;
+}
+
+.perdidas-link.is-active {
+    background-color: #2C9678;
+    box-shadow: inset 4px 0 0 #f6b73c;
+    font-weight: 600;
+}
+
+.perdidas-menu-titulo {
+    color: #cfe3da;
+    letter-spacing: 0.06em;
+}
+
+/* Fondo de la zona de contenido, compartido por las vistas del apartado */
+.perdidas-main {
+    background-color: #F5F1E8;
+}

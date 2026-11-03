@@ -1,0 +1,228 @@
+/* =============================================
+   Estilos de la vista home/manual
+   ============================================= */
+.texto {
+    position: relative;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.texto:hover {
+    transform: translateY(-5px);
+}
+
+.texto::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    left: 0;
+    bottom: -5px;
+    background: #011108;
+    transition: width 0.3s ease;
+}
+
+.texto:hover::after {
+    width: 100%;
+}
+
+/* Botón "Ver mascotas" */
+.btn-mascota {
+    display: inline-block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-mascota:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+/* Tarjetas de animales en home */
+.tarjeta-animal {
+    display: inline-block;
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.tarjeta-animal:hover {
+    transform: translateY(-6px) scale(1.03);
+}
+
+/* ---- Estilos que antes estaban dentro de la vista ---- */
+
+/* SE RESALTA EL TEXTO CUANDO PASAS EL CURSOR POR ENCIMA */
+.texto {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.texto:hover {
+    transform: translateY(-5px);
+}
+
+/* AGREGA UNA LINEA EN LA PARTE BAJA DE EL TEXTO AL PASAR EL CURSOR POR ENCIMA */
+
+.texto {
+    position: relative;
+    display: inline-block;
+}
+
+.texto::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    left: 0;
+    bottom: -5px;
+    background: #011108;
+    transition: width 0.3s ease;
+}
+
+.texto:hover::after {
+    width: 100%;
+}
+
+
+/* RESALTAR BOTON DE VER MASCOTAS AL PASAR CURSOR */
+.btn-mascota {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.btn-mascota:hover {
+    transform: translateY(-5px);
+}
+
+/* RESALTAR TARJETAS DE ANIMALES */
+
+.tarjeta-animal {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.tarjeta-animal:hover {
+    transform: translateY(-5px);
+}
+
+
+
+
+.manual {
+    --hc-ink: #1f2a37;
+    --hc-muted: #5b6776;
+    --hc-brand: #2C9678;
+    --hc-brand-dark: #1F5639;
+    --hc-sun: #f6b73c;
+    --hc-sky: #e3f1ec;
+    --hc-line: #cfe3da;
+    --hc-surface: #ffffff;
+    color: var(--hc-ink);
+    font-family: inherit;
+    line-height: 1.6;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem 4rem;
+}
+.manual *, .manual *::before, .manual *::after { box-sizing: border-box; }
+
+.manual__header { max-width: 640px; margin-bottom: 2rem; }
+.manual__header h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.1;
+    margin: 0 0 .75rem;
+    color: var(--hc-brand-dark);
+}
+.manual__header p { margin: 0; color: var(--hc-muted); font-size: 1.1rem; }
+
+.manual__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+    gap: 2rem;
+    align-items: start;
+}
+
+.manual__player {
+    background: #0f1a1c;
+    border-radius: 14px;
+    overflow: hidden;
+    border-bottom: 6px solid var(--hc-sun);
+}
+.manual__player video,
+.manual__player iframe {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 0;
+    background: #0f1a1c;
+}
+.manual__caption {
+    margin: .75rem 0 0;
+    font-size: .95rem;
+    color: var(--hc-muted);
+}
+
+.manual__chapters h2 { font-size: 1.15rem; margin: 0 0 .75rem; }
+.manual__chapters ol { list-style: none; margin: 0; padding: 0; counter-reset: paso; }
+.manual__chapters li { counter-increment: paso; }
+.manual__chapters button {
+    all: unset;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 2rem 1fr auto;
+    gap: .75rem;
+    align-items: center;
+    width: 100%;
+    padding: .8rem .9rem;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+.manual__chapters button::before {
+    content: counter(paso);
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: var(--hc-sky);
+    color: var(--hc-brand-dark);
+    font-weight: 700;
+    font-size: .9rem;
+}
+.manual__chapters button:hover { background: var(--hc-sky); }
+.manual__chapters button:focus-visible { outline: 3px solid var(--hc-brand); outline-offset: 2px; }
+.manual__chapters button[aria-current="true"] {
+    background: var(--hc-sky);
+    border-color: var(--hc-brand);
+}
+.manual__chapters strong { display: block; font-size: 1rem; }
+.manual__chapters small { color: var(--hc-muted); }
+.manual__chapters time { font-variant-numeric: tabular-nums; color: var(--hc-muted); font-size: .9rem; }
+
+.manual__help {
+    margin-top: 3rem;
+    padding: 1.5rem;
+    border: 1px solid var(--hc-line);
+    border-left: 6px solid var(--hc-sun);
+    border-radius: 10px;
+    background: var(--hc-surface);
+}
+.manual__help h2 { margin: 0 0 .5rem; font-size: 1.2rem; }
+.manual__help p { margin: 0 0 1rem; color: var(--hc-muted); }
+.manual__actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+.manual__btn {
+    display: inline-block;
+    padding: .7rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 2px solid var(--hc-brand);
+}
+.manual__btn--primary { background: var(--hc-brand); color: #fff; }
+.manual__btn--primary:hover { background: var(--hc-brand-dark); border-color: var(--hc-brand-dark); }
+.manual__btn--ghost { color: var(--hc-brand-dark); background: transparent; }
+.manual__btn--ghost:hover { background: var(--hc-sky); }
+.manual__btn:focus-visible { outline: 3px solid var(--hc-sun); outline-offset: 2px; }
+
+@media (max-width: 820px) {
+    .manual__grid { grid-template-columns: 1fr; }
+}

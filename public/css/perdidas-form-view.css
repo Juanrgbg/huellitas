@@ -1,0 +1,63 @@
+/* =============================================
+   Estilos del formulario de mascota perdida (perdidas/_form.blade.php)
+   Lo usan las vistas Agregar y Editar.
+   ============================================= */
+
+.perdidas-titulo,
+.perdidas-subtitulo {
+    color: #1F5639;
+}
+
+/* Cajas del formulario */
+.perdidas-caja {
+    background-color: #F5F1E8;
+    border: 1px solid #e3dccb;
+    border-radius: 1rem;
+    padding: 1.25rem;
+}
+
+/* Inputs con foco suave */
+.perdidas-caja .form-control:focus,
+.perdidas-caja .form-select:focus {
+    border-color: #20583F;
+    box-shadow: 0 0 0 0.2rem rgba(32, 88, 63, 0.2);
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Zona para subir la imagen */
+.perdidas-subida {
+    border: 2px dashed #2C9678;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    background-color: #fff;
+    color: #1F5639;
+    transition: background-color 0.25s ease;
+}
+
+.perdidas-subida:hover {
+    background-color: #e3f1ec;
+}
+
+.perdidas-subida .bi-cloud-arrow-up {
+    font-size: 2.5rem;
+}
+
+.perdidas-foto-actual {
+    max-height: 240px;
+    object-fit: cover;
+}
+
+/* Botón guardar */
+.perdidas-btn-guardar {
+    background-color: #2C9678;
+    border: none;
+    transition: background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.perdidas-btn-guardar:hover {
+    background-color: #20583F;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 14px rgba(32, 88, 63, 0.3);
+}

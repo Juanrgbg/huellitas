@@ -2,6 +2,10 @@
 
 @section('title','Login')
 
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('css/login-view.css') }}">
+@endpush
+
 
 @section('content')
 
@@ -10,25 +14,6 @@
 
         <img src="{{ asset( 'images/login/login-gato-perro.jpeg') }}" alt="fotito" class="atras">
 
-        <style>
-        .atras {
-          position: fixed;          
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100vh;
-          height: 100dvh;           /* en celular respeta la barra del navegador */
-          object-fit: cover;        
-          object-position: center top; 
-          z-index: -1;
-        }
-
-        @media (max-width: 768px) {
-          .atras {
-            object-position: 70% center; 
-          }
-        }
-        </style>
 
   <main class="container min-vh-100 d-flex align-items-center py-4">
     <div class="row w-100 align-items-center g-4 mx-0">

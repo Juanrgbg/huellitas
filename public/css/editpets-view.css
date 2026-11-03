@@ -1,0 +1,24 @@
+/* =============================================
+   CSS específico para la vista Editar Mascotas (editpets.blade.php)
+   ============================================= */
+
+/* Tarjetas de edición */
+.card-edit {
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.card-edit:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12) !important;
+    transform: translateY(-3px);
+}
+
+/* Botones de acción (editar / eliminar) */
+.btn-action {
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.btn-action:hover {
+    transform: scale(1.06);
+    filter: brightness(1.08);
+}
+
